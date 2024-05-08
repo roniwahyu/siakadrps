@@ -4,7 +4,7 @@
         -->
         @inject('comp_model', 'App\Models\ComponentsData')
         <?php 
-            $pageTitle = __('siakadrps2'); // set page title
+            $pageTitle = __('simRpsAkademik'); // set page title
         ?>
         @extends($layout)
         @section('title', $pageTitle)

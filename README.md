@@ -1,4 +1,4 @@
-# Getting Started with siakadrps2
+# Getting Started with SIM RPS Akademik 
 
 ### Generated with [RadSystems](https://radsystems.io)
 

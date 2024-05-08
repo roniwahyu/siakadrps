@@ -1,8 +1,8 @@
 {
-    "name": "siakadrps2/siakadrps2-app",
+    "name": "simrpsakademik/simrpsakademik-app",
     "type": "project",
-    "description": "siakadrps2",
-    "keywords": ["siakadrps2"],
+    "description": "SIM RPS Akademik ",
+    "keywords": ["simrpsakademik"],
     "license": "Put your license",
     "require": {
         "php": "^8.1",
