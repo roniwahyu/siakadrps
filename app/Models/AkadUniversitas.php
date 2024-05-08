@@ -41,9 +41,9 @@ class AkadUniversitas extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				id_universitas LIKE ?  OR 
 				kode_universitas LIKE ?  OR 
-				nama_universitas LIKE ? 
+				nama_universitas LIKE ?  OR 
+				id_universitas LIKE ? 
 		)';
 		$search_params = [
 			"%$text%","%$text%","%$text%"
@@ -60,9 +60,9 @@ class AkadUniversitas extends Model
      */
 	public static function listFields(){
 		return [ 
-			"id_universitas",
 			"kode_universitas",
-			"nama_universitas" 
+			"nama_universitas",
+			"id_universitas" 
 		];
 	}
 	
@@ -74,9 +74,9 @@ class AkadUniversitas extends Model
      */
 	public static function exportListFields(){
 		return [ 
-			"id_universitas",
 			"kode_universitas",
-			"nama_universitas" 
+			"nama_universitas",
+			"id_universitas" 
 		];
 	}
 	
@@ -90,9 +90,7 @@ class AkadUniversitas extends Model
 		return [ 
 			"id_universitas",
 			"kode_universitas",
-			"nama_universitas",
-			"date_created",
-			"date_updated" 
+			"nama_universitas" 
 		];
 	}
 	
@@ -106,9 +104,7 @@ class AkadUniversitas extends Model
 		return [ 
 			"id_universitas",
 			"kode_universitas",
-			"nama_universitas",
-			"date_created",
-			"date_updated" 
+			"nama_universitas" 
 		];
 	}
 	
@@ -120,9 +116,9 @@ class AkadUniversitas extends Model
      */
 	public static function editFields(){
 		return [ 
-			"id_universitas",
 			"kode_universitas",
-			"nama_universitas" 
+			"nama_universitas",
+			"id_universitas" 
 		];
 	}
 }

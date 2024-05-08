@@ -20,7 +20,7 @@ class RpsKriteriaCapaianController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.rpskriteriacapaian.list";
 		$query = RpsKriteriaCapaian::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			RpsKriteriaCapaian::search($query, $search); // search table records

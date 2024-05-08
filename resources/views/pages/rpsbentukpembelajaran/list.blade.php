@@ -14,7 +14,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 @extends($layout)
 @section('title', $pageTitle)
 @section('content')
-<section class="page" data-page-type="list" data-page-url="{{ url()->full() }}">
+<section class="page ajax-page" data-page-type="list" data-page-url="{{ url()->full() }}">
     <?php
         if( $show_header == true ){
     ?>
@@ -55,6 +55,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div  class=" page-content" >
                     <div id="rpsbentukpembelajaran-list-records">
                         <div id="page-main-content" class="table-responsive">
+                            <div class="ajax-page-load-indicator" style="display:none">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
                             <?php Html::page_bread_crumb("/rpsbentukpembelajaran/", $field_name, $field_value); ?>
                             <?php Html::display_page_errors($errors); ?>
                             <div class="filter-tags mb-2">
@@ -179,6 +185,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             $pager->limit = $limit;
                             $pager->show_page_number_list = true;
                             $pager->pager_link_range=5;
+                            $pager->ajax_page = true;
                             $pager->render();
                             }
                         ?>

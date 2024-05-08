@@ -20,7 +20,7 @@ class AkadThnAkademikController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.akadthnakademik.list";
 		$query = AkadThnAkademik::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			AkadThnAkademik::search($query, $search); // search table records

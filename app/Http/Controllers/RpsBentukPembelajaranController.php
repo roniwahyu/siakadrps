@@ -20,7 +20,7 @@ class RpsBentukPembelajaranController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.rpsbentukpembelajaran.list";
 		$query = RpsBentukPembelajaran::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			RpsBentukPembelajaran::search($query, $search); // search table records

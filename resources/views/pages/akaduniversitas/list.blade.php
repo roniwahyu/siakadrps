@@ -9,12 +9,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     $total_records = $records->total();
     $limit = $records->perPage();
     $record_count = count($records);
-    $pageTitle = __('akadUniversitas'); //set dynamic page title
+    $pageTitle = __('universitas'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
 @section('content')
-<section class="page" data-page-type="list" data-page-url="{{ url()->full() }}">
+<section class="page ajax-page" data-page-type="list" data-page-url="{{ url()->full() }}">
     <?php
         if( $show_header == true ){
     ?>
@@ -27,9 +27,9 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     </div>
                 </div>
                 <div class="col-auto  " >
-                    <a  class="btn btn-primary btn-block" href="<?php print_link("akaduniversitas/add", true) ?>" >
+                    <a  class="btn btn-success btn-block" href="<?php print_link("akaduniversitas/add", true) ?>" >
                     <i class="fa fa-plus"></i>                              
-                    {{ __('addNewAkadUniversita') }} 
+                    {{ __('addNewUniversitas') }} 
                 </a>
             </div>
             <div class="col-md-3  " >
@@ -55,10 +55,21 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div  class=" page-content" >
                     <div id="akaduniversitas-list-records">
                         <div id="page-main-content" class="table-responsive">
+                            <div class="ajax-page-load-indicator" style="display:none">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
                             <?php Html::page_bread_crumb("/akaduniversitas/", $field_name, $field_value); ?>
                             <?php Html::display_page_errors($errors); ?>
                             <div class="filter-tags mb-2">
                                 <?php Html::filter_tag('search', __('Search')); ?>
+                            </div>
+                            <div class="col-md-auto d-flex">    
+                                <button data-prompt-msg="{{ __('promptDeleteRecords') }}" data-display-style="modal" data-url="<?php print_link("akaduniversitas/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
+                                <i class="fa fa-times"></i> {{ __('deleteSelected') }}
+                                </button>
                             </div>
                             <table class="table table-hover table-striped table-sm text-left">
                                 <thead class="table-header ">
@@ -68,7 +79,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <input class="toggle-check-all form-check-input" type="checkbox" />
                                         </label>
                                         </th>
-                                        <th class="td-id_universitas" > {{ __('idUniversitas') }}</th>
                                         <th class="td-kode_universitas" > {{ __('kodeUniversitas') }}</th>
                                         <th class="td-nama_universitas" > {{ __('namaUniversitas') }}</th>
                                         <th class="td-btn"></th>
@@ -92,9 +102,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             </label>
                                         </td>
                                         <!--PageComponentStart-->
-                                        <td class="td-id_universitas">
-                                            <a href="<?php print_link("/akaduniversitas/view/$data[id_universitas]") ?>"><?php echo $data['id_universitas']; ?></a>
-                                        </td>
                                         <td class="td-kode_universitas">
                                             <?php echo  $data['kode_universitas'] ; ?>
                                         </td>
@@ -103,22 +110,15 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </td>
                                         <!--PageComponentEnd-->
                                         <td class="td-btn">
-                                            <div class="dropdown" >
-                                                <button data-bs-toggle="dropdown" class="dropdown-toggle btn text-primary btn-flat btn-sm">
-                                                <i class="fa fa-bars"></i> 
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <a class="dropdown-item "   href="<?php print_link("akaduniversitas/view/$rec_id"); ?>" >
-                                                    <i class="fa fa-eye"></i> {{ __('view') }}
-                                                </a>
-                                                <a class="dropdown-item "   href="<?php print_link("akaduniversitas/edit/$rec_id"); ?>" >
-                                                <i class="fa fa-edit"></i> {{ __('edit') }}
-                                            </a>
-                                            <a class="dropdown-item record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" href="<?php print_link("akaduniversitas/delete/$rec_id"); ?>" >
-                                            <i class="fa fa-times"></i> {{ __('delete') }}
+                                            <a class="btn btn-sm btn-primary has-tooltip "    href="<?php print_link("akaduniversitas/view/$rec_id"); ?>" >
+                                            <i class="fa fa-eye"></i> {{ __('view') }}
                                         </a>
-                                    </ul>
-                                </div>
+                                        <a class="btn btn-sm btn-success has-tooltip "    href="<?php print_link("akaduniversitas/edit/$rec_id"); ?>" >
+                                        <i class="fa fa-edit"></i> {{ __('edit') }}
+                                    </a>
+                                    <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal"  href="<?php print_link("akaduniversitas/delete/$rec_id"); ?>" >
+                                    <i class="fa fa-times"></i> {{ __('delete') }}
+                                </a>
                             </td>
                         </tr>
                         <?php 
@@ -163,6 +163,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             $pager->limit = $limit;
                             $pager->show_page_number_list = true;
                             $pager->pager_link_range=5;
+                            $pager->ajax_page = true;
                             $pager->render();
                             }
                         ?>

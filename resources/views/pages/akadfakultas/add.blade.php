@@ -36,7 +36,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     <div  class="" >
         <div class="container">
             <div class="row ">
-                <div class="col-md-4 comp-grid " >
+                <div class="col-md-4 col-sm-12 col-lg-4 comp-grid " >
                     <div  class="card card-1 border rounded page-content" >
                         <!--[form-start]-->
                         <form id="akadfakultas-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="{{ route('akadfakultas.store') }}" method="post">
@@ -143,7 +143,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     {{ __('button') }} 
                 </a>
             </div>
-            <div class="col-md-8 comp-grid " >
+            <div class="col-md-8 col-sm-12 col-lg-8 comp-grid " >
                 <div class=" ">
                     <?php
                         $params = [ 'limit' => 25]; //new query param

@@ -4,12 +4,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    $pageTitle = __('akadProdiDetails'); //set dynamic page title
+    $pageTitle = __('prodiDetail'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
 @section('content')
-<section class="page" data-page-type="view" data-page-url="{{ url()->full() }}">
+<section class="page ajax-page" data-page-type="view" data-page-url="{{ url()->full() }}">
     <?php
         if( $show_header == true ){
     ?>
@@ -43,6 +43,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             $rec_id = ($data['id_prodi'] ? urlencode($data['id_prodi']) : null);
                         ?>
                         <div id="page-main-content" class=" px-3 mb-3">
+                            <div class="ajax-page-load-indicator" style="display:none">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
                             <div class="page-data">
                                 <!--PageComponentStart-->
                                 <div class="mb-3 row row justify-content-start g-0">
@@ -91,30 +97,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <small class="text-muted">{{ __('namaProdi') }}</small>
                                                 <div class="fw-bold">
                                                     <?php echo  $data['nama_prodi'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">{{ __('dateCreated') }}</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['date_created'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">{{ __('dateUpdated') }}</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['date_updated'] ; ?>
                                                 </div>
                                             </div>
                                         </div>

@@ -4,7 +4,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    $pageTitle = __('addNewAkadUniversita'); //set dynamic page title
+    $pageTitle = __('addNewUniversitas'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)

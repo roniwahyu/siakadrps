@@ -20,7 +20,7 @@ class AkadKurikulumController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.akadkurikulum.list";
 		$query = AkadKurikulum::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			AkadKurikulum::search($query, $search); // search table records

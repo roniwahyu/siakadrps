@@ -446,6 +446,12 @@ Route::get('componentsdata/id_cpmk_option_list',  function(Request $request){
 		return $compModel->id_cpmk_option_list($request);
 	}
 )->middleware(['auth']);
+	
+Route::get('componentsdata/id_fakultas_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->id_fakultas_option_list($request);
+	}
+)->middleware(['auth']);
 
 
 Route::post('fileuploader/upload/{fieldname}', 'FileUploaderController@upload');

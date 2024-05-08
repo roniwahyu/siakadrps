@@ -65,7 +65,7 @@ class ComponentsData{
      * @return array
      */
 	function fakultas_id_option_list(){
-		$sqltext = "SELECT id_fakultas as value, id_fakultas as label FROM akad_fakultas";
+		$sqltext = "SELECT id_fakultas as value, concat(kode_fakultas,'-',nama_fakultas) as label FROM akad_fakultas";
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;
@@ -168,6 +168,18 @@ class ComponentsData{
      */
 	function id_cpmk_option_list(){
 		$sqltext = "SELECT id as value, id as label FROM rps_cp_mk";
+		$query_params = [];
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+	
+
+	/**
+     * id_fakultas_option_list Model Action
+     * @return array
+     */
+	function id_fakultas_option_list(){
+		$sqltext = "SELECT id_fakultas as value, id_fakultas as label FROM akad_fakultas";
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;

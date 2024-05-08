@@ -20,7 +20,7 @@ class AkadProdiController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.akadprodi.list";
 		$query = AkadProdi::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			AkadProdi::search($query, $search); // search table records

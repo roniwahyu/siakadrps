@@ -20,7 +20,7 @@ class RpsKategoriRelasiController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.rpskategorirelasi.list";
 		$query = RpsKategoriRelasi::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			RpsKategoriRelasi::search($query, $search); // search table records

@@ -41,9 +41,9 @@ class AkadProdi extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				id_prodi LIKE ?  OR 
 				kode_prodi LIKE ?  OR 
-				nama_prodi LIKE ? 
+				nama_prodi LIKE ?  OR 
+				id_prodi LIKE ? 
 		)';
 		$search_params = [
 			"%$text%","%$text%","%$text%"
@@ -60,12 +60,10 @@ class AkadProdi extends Model
      */
 	public static function listFields(){
 		return [ 
-			"id_prodi",
 			"fakultas_id",
 			"kode_prodi",
 			"nama_prodi",
-			"date_created",
-			"date_updated" 
+			"id_prodi" 
 		];
 	}
 	
@@ -77,12 +75,10 @@ class AkadProdi extends Model
      */
 	public static function exportListFields(){
 		return [ 
-			"id_prodi",
 			"fakultas_id",
 			"kode_prodi",
 			"nama_prodi",
-			"date_created",
-			"date_updated" 
+			"id_prodi" 
 		];
 	}
 	
@@ -97,9 +93,7 @@ class AkadProdi extends Model
 			"id_prodi",
 			"fakultas_id",
 			"kode_prodi",
-			"nama_prodi",
-			"date_created",
-			"date_updated" 
+			"nama_prodi" 
 		];
 	}
 	
@@ -114,9 +108,7 @@ class AkadProdi extends Model
 			"id_prodi",
 			"fakultas_id",
 			"kode_prodi",
-			"nama_prodi",
-			"date_created",
-			"date_updated" 
+			"nama_prodi" 
 		];
 	}
 	
@@ -128,10 +120,10 @@ class AkadProdi extends Model
      */
 	public static function editFields(){
 		return [ 
-			"id_prodi",
 			"fakultas_id",
 			"kode_prodi",
-			"nama_prodi" 
+			"nama_prodi",
+			"id_prodi" 
 		];
 	}
 }

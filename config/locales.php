@@ -1,7 +1,7 @@
 
 <?php 
 	return [
-		'en' => 'English',
-		'id' => 'Bahasa Indonesia'
+		'en-US' => 'English',
+		'id-ID' => 'Bahasa Indonesia'
 
 	];

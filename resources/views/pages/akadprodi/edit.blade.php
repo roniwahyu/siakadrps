@@ -46,11 +46,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="fakultas_id">{{ __('fakultasId') }} <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="fakultas_id">{{ __('fakultas') }} <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-fakultas_id-holder" class=" ">
-                                            <select required=""  id="ctrl-fakultas_id" data-field="fakultas_id" name="fakultas_id"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
+                                            <select required=""  id="ctrl-fakultas_id" data-field="fakultas_id" name="fakultas_id"  placeholder="{{ __('selectAValue') }}"    class="selectize" >
                                             <option value="">{{ __('selectAValue') }}</option>
                                             <?php
                                                 $options = $comp_model->fakultas_id_option_list() ?? [];

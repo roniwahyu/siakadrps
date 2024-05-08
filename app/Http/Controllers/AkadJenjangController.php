@@ -20,7 +20,7 @@ class AkadJenjangController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.akadjenjang.list";
 		$query = AkadJenjang::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			AkadJenjang::search($query, $search); // search table records

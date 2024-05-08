@@ -19,7 +19,7 @@ class CorePermissionsController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.corepermissions.list";
 		$query = CorePermissions::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			CorePermissions::search($query, $search); // search table records

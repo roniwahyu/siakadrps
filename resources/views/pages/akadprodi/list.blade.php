@@ -9,12 +9,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     $total_records = $records->total();
     $limit = $records->perPage();
     $record_count = count($records);
-    $pageTitle = __('akadProdi'); //set dynamic page title
+    $pageTitle = __('prodi'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
 @section('content')
-<section class="page" data-page-type="list" data-page-url="{{ url()->full() }}">
+<section class="page ajax-page" data-page-type="list" data-page-url="{{ url()->full() }}">
     <?php
         if( $show_header == true ){
     ?>
@@ -27,9 +27,9 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     </div>
                 </div>
                 <div class="col-auto  " >
-                    <a  class="btn btn-primary btn-block" href="<?php print_link("akadprodi/add", true) ?>" >
+                    <a  class="btn btn-success btn-block" href="<?php print_link("akadprodi/add", true) ?>" >
                     <i class="fa fa-plus"></i>                              
-                    {{ __('addNewAkadProdi') }} 
+                    {{ __('addNewProdi') }} 
                 </a>
             </div>
             <div class="col-md-3  " >
@@ -55,6 +55,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div  class=" page-content" >
                     <div id="akadprodi-list-records">
                         <div id="page-main-content" class="table-responsive">
+                            <div class="ajax-page-load-indicator" style="display:none">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
                             <?php Html::page_bread_crumb("/akadprodi/", $field_name, $field_value); ?>
                             <?php Html::display_page_errors($errors); ?>
                             <div class="filter-tags mb-2">
@@ -68,12 +74,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <input class="toggle-check-all form-check-input" type="checkbox" />
                                         </label>
                                         </th>
-                                        <th class="td-id_prodi" > {{ __('idProdi') }}</th>
-                                        <th class="td-fakultas_id" > {{ __('fakultasId') }}</th>
+                                        <th class="td-fakultas_id <?php echo (get_value('orderby') == 'fakultas_id' ? 'sortedby' : null); ?>" >
+                                        <?php Html :: get_field_order_link('fakultas_id', __('fakultasId'), ''); ?>
+                                        </th>
                                         <th class="td-kode_prodi" > {{ __('kodeProdi') }}</th>
                                         <th class="td-nama_prodi" > {{ __('namaProdi') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -95,9 +100,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             </label>
                                         </td>
                                         <!--PageComponentStart-->
-                                        <td class="td-id_prodi">
-                                            <a href="<?php print_link("/akadprodi/view/$data[id_prodi]") ?>"><?php echo $data['id_prodi']; ?></a>
-                                        </td>
                                         <td class="td-fakultas_id">
                                             <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("akadfakultas/view/$data[fakultas_id]?subpage=1") ?>">
                                             <i class="fa fa-eye"></i> <?php echo "Akad Fakultas" ?>
@@ -109,30 +111,17 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <td class="td-nama_prodi">
                                         <?php echo  $data['nama_prodi'] ; ?>
                                     </td>
-                                    <td class="td-date_created">
-                                        <?php echo  $data['date_created'] ; ?>
-                                    </td>
-                                    <td class="td-date_updated">
-                                        <?php echo  $data['date_updated'] ; ?>
-                                    </td>
                                     <!--PageComponentEnd-->
                                     <td class="td-btn">
-                                        <div class="dropdown" >
-                                            <button data-bs-toggle="dropdown" class="dropdown-toggle btn text-primary btn-flat btn-sm">
-                                            <i class="fa fa-bars"></i> 
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <a class="dropdown-item "   href="<?php print_link("akadprodi/view/$rec_id"); ?>" >
-                                                <i class="fa fa-eye"></i> {{ __('view') }}
-                                            </a>
-                                            <a class="dropdown-item "   href="<?php print_link("akadprodi/edit/$rec_id"); ?>" >
-                                            <i class="fa fa-edit"></i> {{ __('edit') }}
-                                        </a>
-                                        <a class="dropdown-item record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" href="<?php print_link("akadprodi/delete/$rec_id"); ?>" >
-                                        <i class="fa fa-times"></i> {{ __('delete') }}
+                                        <a class="btn btn-sm btn-primary has-tooltip "    href="<?php print_link("akadprodi/view/$rec_id"); ?>" >
+                                        <i class="fa fa-eye"></i> {{ __('view') }}
                                     </a>
-                                </ul>
-                            </div>
+                                    <a class="btn btn-sm btn-success has-tooltip "    href="<?php print_link("akadprodi/edit/$rec_id"); ?>" >
+                                    <i class="fa fa-edit"></i> {{ __('edit') }}
+                                </a>
+                                <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal"  href="<?php print_link("akadprodi/delete/$rec_id"); ?>" >
+                                <i class="fa fa-times"></i> {{ __('delete') }}
+                            </a>
                         </td>
                     </tr>
                     <?php 
@@ -177,6 +166,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                         $pager->limit = $limit;
                         $pager->show_page_number_list = true;
                         $pager->pager_link_range=5;
+                        $pager->ajax_page = true;
                         $pager->render();
                         }
                     ?>

@@ -74,7 +74,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <input class="toggle-check-all form-check-input" type="checkbox" />
                                         </label>
                                         </th>
-                                        <th class="td-id_fakultas" > #</th>
                                         <th class="td-kode_universitas" > {{ __('kodeUniversitas') }}</th>
                                         <th class="td-nama_universitas" > {{ __('namaUniversitas') }}</th>
                                         <th class="td-kode_fakultas" > {{ __('kodeFakultas') }}</th>
@@ -101,9 +100,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             </label>
                                         </td>
                                         <!--PageComponentStart-->
-                                        <td class="td-id_fakultas">
-                                            <a href="<?php print_link("/akadfakultas/view/$data[id_fakultas]") ?>"><?php echo $data['id_fakultas']; ?></a>
-                                        </td>
                                         <td class="td-akaduniversitas_kode_universitas">
                                             <?php echo  $data['akaduniversitas_kode_universitas'] ; ?>
                                         </td>
