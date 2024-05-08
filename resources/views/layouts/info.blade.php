@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="{{ asset('css/material-icons.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/animate.css') }}" />
-<link rel="stylesheet" href="{{ asset('css/bootstrap-theme-pulse.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/bootstrap-theme-flatly.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/custom-style.css') }}" />
 		<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 		@yield('pagecss')
@@ -23,6 +23,30 @@
 				<a class="navbar-brand" href="{{ url('/home') }}">
 					<img class="img-fluid" src="{{ asset('images/logo.png') }}" /> {{ config('app.name') }}
 				</a>
+	<?php
+	if (Auth::check()) {
+	?>
+		<button type="button" class="navbar-toggler dropdown-toggle" data-bs-toggle="collapse"
+			data-bs-target=".navbar-responsive-collapse">
+		</button>
+		<div class="navbar-collapse collapse navbar-responsive-collapse">
+			<div class="me-auto"></div>
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+						<span class="avatar-icon"><i class="material-icons">account_box</i></span>
+						<span>{{ __('hi') }} <?php echo $user->UserName(); ?></span>
+					</a>
+					<ul class="dropdown-menu">
+						<a class="dropdown-item" href="<?php print_link('account') ?>"><i class="material-icons">account_box</i> {{ __('myAccount') }}</a>
+						<a class="dropdown-item" href="<?php print_link('auth/logout') ?>"><i class="material-icons">exit_to_app</i> {{ __('logout') }}</a>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	<?php
+	}
+	?>
 			</div>
 		</div>
 		<div id="main-content">

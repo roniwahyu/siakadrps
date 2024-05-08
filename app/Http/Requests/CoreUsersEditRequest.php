@@ -23,11 +23,12 @@ class CoreUsersEditRequest extends FormRequest
     public function rules()
     {
 		
+		$rec_id = request()->route('rec_id');
+
         return [
             
 				"ip_address" => "nullable|string",
-				"username" => "nullable|string",
-				"email" => "filled|email",
+				"username" => "filled|string|unique:core_users,username,$rec_id,id",
 				"email_login_hash" => "nullable|email",
 				"activation_selector" => "nullable|string",
 				"activation_code" => "nullable|string",

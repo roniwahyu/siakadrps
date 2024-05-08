@@ -25,7 +25,7 @@ class AkadMkSyaratAddRequest extends FormRequest
 		
         return [
             
-				"id_prodi" => "required|numeric",
+				"id_prodi" => "required",
 				"kode_mk_main" => "required|string",
 				"kode_mk_syarat" => "required|string",
 				"nil_mk_syarat" => "required",

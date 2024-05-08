@@ -62,9 +62,7 @@ class AkadJenjang extends Model
 		return [ 
 			"id_jenjang",
 			"jenjang",
-			"keterangan",
-			"date_created",
-			"date_updated" 
+			"keterangan" 
 		];
 	}
 	
@@ -78,9 +76,7 @@ class AkadJenjang extends Model
 		return [ 
 			"id_jenjang",
 			"jenjang",
-			"keterangan",
-			"date_created",
-			"date_updated" 
+			"keterangan" 
 		];
 	}
 	

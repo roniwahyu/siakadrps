@@ -71,8 +71,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <th class="td-id_universitas" > {{ __('idUniversitas') }}</th>
                                         <th class="td-kode_universitas" > {{ __('kodeUniversitas') }}</th>
                                         <th class="td-nama_universitas" > {{ __('namaUniversitas') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -102,12 +100,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </td>
                                         <td class="td-nama_universitas">
                                             <?php echo  $data['nama_universitas'] ; ?>
-                                        </td>
-                                        <td class="td-date_created">
-                                            <?php echo  $data['date_created'] ; ?>
-                                        </td>
-                                        <td class="td-date_updated">
-                                            <?php echo  $data['date_updated'] ; ?>
                                         </td>
                                         <!--PageComponentEnd-->
                                         <td class="td-btn">

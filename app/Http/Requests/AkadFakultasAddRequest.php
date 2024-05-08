@@ -28,15 +28,15 @@ class AkadFakultasAddRequest extends FormRequest
 				"universitas_id" => "required",
 				"kode_fakultas" => "required|string",
 				"nama_fakultas" => "required|string",
-				"keterangan" => "nullable|string",
-            
+				"keterangan" => "nullable",
+            	"captcha" => "required|captcha",
         ];
     }
 
 	public function messages()
     {
         return [
-			
+			"captcha" => __('invalidCaptchaCode'),
             //using laravel default validation messages
         ];
     }

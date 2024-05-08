@@ -62,9 +62,7 @@ class AkadUniversitas extends Model
 		return [ 
 			"id_universitas",
 			"kode_universitas",
-			"nama_universitas",
-			"date_created",
-			"date_updated" 
+			"nama_universitas" 
 		];
 	}
 	
@@ -78,9 +76,7 @@ class AkadUniversitas extends Model
 		return [ 
 			"id_universitas",
 			"kode_universitas",
-			"nama_universitas",
-			"date_created",
-			"date_updated" 
+			"nama_universitas" 
 		];
 	}
 	

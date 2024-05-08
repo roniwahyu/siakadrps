@@ -66,9 +66,7 @@ class AkadMkSyarat extends Model
 			"kode_mk_syarat",
 			"nil_mk_syarat",
 			"nil_angka_mk_syarat",
-			"urut_syarat",
-			"date_created",
-			"date_updated" 
+			"urut_syarat" 
 		];
 	}
 	
@@ -86,9 +84,7 @@ class AkadMkSyarat extends Model
 			"kode_mk_syarat",
 			"nil_mk_syarat",
 			"nil_angka_mk_syarat",
-			"urut_syarat",
-			"date_created",
-			"date_updated" 
+			"urut_syarat" 
 		];
 	}
 	
@@ -140,13 +136,13 @@ class AkadMkSyarat extends Model
      */
 	public static function editFields(){
 		return [ 
-			"id_siakad_mk_syarat",
 			"id_prodi",
 			"kode_mk_main",
 			"kode_mk_syarat",
 			"nil_mk_syarat",
 			"nil_angka_mk_syarat",
-			"urut_syarat" 
+			"urut_syarat",
+			"id_siakad_mk_syarat" 
 		];
 	}
 }

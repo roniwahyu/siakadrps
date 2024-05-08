@@ -17,7 +17,7 @@ class ComponentsData{
      * @return array
      */
 	function universitas_id_option_list(){
-		$sqltext = "SELECT id_universitas as value, id_universitas as label FROM akad_universitas";
+		$sqltext = "SELECT  DISTINCT id_universitas AS value,concat(kode_universitas,'-',nama_universitas) AS label FROM akad_universitas";
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;
@@ -49,6 +49,18 @@ class ComponentsData{
 	
 
 	/**
+     * akadmksyarat_id_prodi_option_list Model Action
+     * @return array
+     */
+	function akadmksyarat_id_prodi_option_list(){
+		$sqltext = "SELECT  DISTINCT id_prodi AS value,concat(kode_prodi,'-',nama_prodi) AS label FROM akad_prodi";
+		$query_params = [];
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+	
+
+	/**
      * fakultas_id_option_list Model Action
      * @return array
      */
@@ -57,6 +69,48 @@ class ComponentsData{
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;
+	}
+	
+
+	/**
+     * id_universitas_option_list Model Action
+     * @return array
+     */
+	function id_universitas_option_list(){
+		$sqltext = "SELECT id_universitas as value, id_universitas as label FROM akad_universitas";
+		$query_params = [];
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+	
+
+	/**
+     * Check if value already exist in CoreUsers table
+	 * @param string $value
+     * @return bool
+     */
+	function coreusers_username_value_exist(Request $request){
+		$value = trim($request->value);
+		$exist = DB::table('core_users')->where('username', $value)->value('username');   
+		if($exist){
+			return true;
+		}
+		return false;
+	}
+	
+
+	/**
+     * Check if value already exist in CoreUsers table
+	 * @param string $value
+     * @return bool
+     */
+	function coreusers_email_value_exist(Request $request){
+		$value = trim($request->value);
+		$exist = DB::table('core_users')->where('email', $value)->value('email');   
+		if($exist){
+			return true;
+		}
+		return false;
 	}
 	
 

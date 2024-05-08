@@ -1,6 +1,8 @@
 <?php 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CoreUsersRegisterRequest;
+use App\Http\Requests\CoreUsersAccountEditRequest;
 use App\Http\Requests\CoreUsersAddRequest;
 use App\Http\Requests\CoreUsersEditRequest;
 use App\Models\CoreUsers;

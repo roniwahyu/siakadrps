@@ -20,14 +20,21 @@ class AkadFakultasController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.akadfakultas.list";
 		$query = AkadFakultas::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			AkadFakultas::search($query, $search); // search table records
 		}
-		$orderby = $request->orderby ?? "akad_fakultas.id_fakultas";
-		$ordertype = $request->ordertype ?? "desc";
-		$query->orderBy($orderby, $ordertype);
+		$query->join("akad_universitas", "akad_fakultas.universitas_id", "=", "akad_universitas.id_universitas");
+		if($request->orderby){
+			$orderby = $request->orderby;
+			$ordertype = ($request->ordertype ? $request->ordertype : "desc");
+			$query->orderBy($orderby, $ordertype);
+		}
+		else{
+			$query->orderBy("akad_fakultas.universitas_id", "ASC");
+			$query->orderBy("akad_fakultas.id_fakultas", "ASC");
+		}
 		if($fieldname){
 			$query->where($fieldname , $fieldvalue); //filter by a table field
 		}
@@ -43,6 +50,7 @@ class AkadFakultasController extends Controller
      */
 	function view($rec_id = null){
 		$query = AkadFakultas::query();
+		$query->join("akad_universitas", "akad_fakultas.universitas_id", "=", "akad_universitas.id_universitas");
 		$record = $query->findOrFail($rec_id, AkadFakultas::viewFields());
 		return $this->renderView("pages.akadfakultas.view", ["data" => $record]);
 	}
@@ -77,7 +85,7 @@ class AkadFakultasController extends Controller
 		//save AkadFakultas record
 		$record = AkadFakultas::create($modeldata);
 		$rec_id = $record->id_fakultas;
-		return $this->redirect("akadfakultas", __('recordAddedSuccessfully'));
+		return $this->redirect("akadfakultas/add", __('recordAddedSuccessfully'));
 	}
 	
 

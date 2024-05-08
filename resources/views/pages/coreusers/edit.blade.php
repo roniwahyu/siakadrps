@@ -58,23 +58,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="username">{{ __('username') }} </label>
+                                        <label class="control-label" for="username">{{ __('username') }} <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-username-holder" class=" ">
-                                            <input id="ctrl-username" data-field="username"  value="<?php  echo $data['username']; ?>" type="text" placeholder="{{ __('enterUsername') }}"  name="username"  class="form-control " />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="control-label" for="email">{{ __('email') }} <span class="text-danger">*</span></label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div id="ctrl-email-holder" class=" ">
-                                            <input id="ctrl-email" data-field="email"  value="<?php  echo $data['email']; ?>" type="email" placeholder="{{ __('enterEmail') }}"  required="" name="email"  class="form-control " />
+                                            <input id="ctrl-username" data-field="username"  value="<?php  echo $data['username']; ?>" type="text" placeholder="{{ __('enterUsername') }}"  required="" name="username"  data-url="componentsdata/coreusers_username_value_exist/" data-loading-msg="{{ __('checkingAvailability') }}" data-available-msg="{{ __('available') }}" data-unavailable-msg="{{ __('notAvailable') }}" class="form-control  ctrl-check-duplicate" />
+                                            <div class="check-status"></div> 
                                         </div>
                                     </div>
                                 </div>

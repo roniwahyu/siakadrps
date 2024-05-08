@@ -9,7 +9,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     $total_records = $records->total();
     $limit = $records->perPage();
     $record_count = count($records);
-    $pageTitle = __('akadJenjang'); //set dynamic page title
+    $pageTitle = __('jenjang'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
@@ -68,11 +68,9 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <input class="toggle-check-all form-check-input" type="checkbox" />
                                         </label>
                                         </th>
-                                        <th class="td-id_jenjang" > {{ __('idJenjang') }}</th>
+                                        <th class="td-id_jenjang" > #</th>
                                         <th class="td-jenjang" > {{ __('jenjang') }}</th>
                                         <th class="td-keterangan" > {{ __('keterangan') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -102,12 +100,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </td>
                                         <td class="td-keterangan">
                                             <?php echo  $data['keterangan'] ; ?>
-                                        </td>
-                                        <td class="td-date_created">
-                                            <?php echo  $data['date_created'] ; ?>
-                                        </td>
-                                        <td class="td-date_updated">
-                                            <?php echo  $data['date_updated'] ; ?>
                                         </td>
                                         <!--PageComponentEnd-->
                                         <td class="td-btn">

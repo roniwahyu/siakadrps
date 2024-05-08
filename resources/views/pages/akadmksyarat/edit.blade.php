@@ -50,7 +50,22 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-id_prodi-holder" class=" ">
-                                            <input id="ctrl-id_prodi" data-field="id_prodi"  value="<?php  echo $data['id_prodi']; ?>" type="number" placeholder="{{ __('enterIdProdi') }}" step="any"  required="" name="id_prodi"  class="form-control " />
+                                            <select required=""  id="ctrl-id_prodi" data-field="id_prodi" name="id_prodi"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
+                                            <option value="">{{ __('selectAValue') }}</option>
+                                            <?php
+                                                $options = $comp_model->akadmksyarat_id_prodi_option_list() ?? [];
+                                                foreach($options as $option){
+                                                $value = $option->value;
+                                                $label = $option->label ?? $value;
+                                                $selected = ( $value == $data['id_prodi'] ? 'selected' : null );
+                                            ?>
+                                            <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                            <?php echo $label; ?>
+                                            </option>
+                                            <?php
+                                                }
+                                            ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

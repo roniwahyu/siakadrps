@@ -9,12 +9,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     $total_records = $records->total();
     $limit = $records->perPage();
     $record_count = count($records);
-    $pageTitle = __('akadFakultas'); //set dynamic page title
+    $pageTitle = __('fakultas'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
 @section('content')
-<section class="page" data-page-type="list" data-page-url="{{ url()->full() }}">
+<section class="page ajax-page" data-page-type="list" data-page-url="{{ url()->full() }}">
     <?php
         if( $show_header == true ){
     ?>
@@ -29,7 +29,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div class="col-auto  " >
                     <a  class="btn btn-primary btn-block" href="<?php print_link("akadfakultas/add", true) ?>" >
                     <i class="fa fa-plus"></i>                              
-                    {{ __('addNewAkadFakulta') }} 
+                    {{ __('addNewFakultas') }} 
                 </a>
             </div>
             <div class="col-md-3  " >
@@ -55,6 +55,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div  class=" page-content" >
                     <div id="akadfakultas-list-records">
                         <div id="page-main-content" class="table-responsive">
+                            <div class="ajax-page-load-indicator" style="display:none">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
                             <?php Html::page_bread_crumb("/akadfakultas/", $field_name, $field_value); ?>
                             <?php Html::display_page_errors($errors); ?>
                             <div class="filter-tags mb-2">
@@ -68,13 +74,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <input class="toggle-check-all form-check-input" type="checkbox" />
                                         </label>
                                         </th>
-                                        <th class="td-id_fakultas" > {{ __('idFakultas') }}</th>
-                                        <th class="td-universitas_id" > {{ __('universitasId') }}</th>
+                                        <th class="td-id_fakultas" > #</th>
+                                        <th class="td-kode_universitas" > {{ __('kodeUniversitas') }}</th>
+                                        <th class="td-nama_universitas" > {{ __('namaUniversitas') }}</th>
                                         <th class="td-kode_fakultas" > {{ __('kodeFakultas') }}</th>
                                         <th class="td-nama_fakultas" > {{ __('namaFakultas') }}</th>
                                         <th class="td-keterangan" > {{ __('keterangan') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -99,99 +104,88 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <td class="td-id_fakultas">
                                             <a href="<?php print_link("/akadfakultas/view/$data[id_fakultas]") ?>"><?php echo $data['id_fakultas']; ?></a>
                                         </td>
-                                        <td class="td-universitas_id">
-                                            <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("akaduniversitas/view/$data[universitas_id]?subpage=1") ?>">
-                                            <i class="fa fa-eye"></i> <?php echo "Akad Universitas" ?>
+                                        <td class="td-akaduniversitas_kode_universitas">
+                                            <?php echo  $data['akaduniversitas_kode_universitas'] ; ?>
+                                        </td>
+                                        <td class="td-akaduniversitas_nama_universitas">
+                                            <?php echo  $data['akaduniversitas_nama_universitas'] ; ?>
+                                        </td>
+                                        <td class="td-kode_fakultas">
+                                            <?php echo  $data['kode_fakultas'] ; ?>
+                                        </td>
+                                        <td class="td-nama_fakultas">
+                                            <?php echo  $data['nama_fakultas'] ; ?>
+                                        </td>
+                                        <td class="td-keterangan">
+                                            <?php echo  $data['keterangan'] ; ?>
+                                        </td>
+                                        <!--PageComponentEnd-->
+                                        <td class="td-btn">
+                                            <a class="btn btn-sm btn-primary has-tooltip "    href="<?php print_link("akadfakultas/view/$rec_id"); ?>" >
+                                            <i class="fa fa-eye"></i> {{ __('view') }}
                                         </a>
-                                    </td>
-                                    <td class="td-kode_fakultas">
-                                        <?php echo  $data['kode_fakultas'] ; ?>
-                                    </td>
-                                    <td class="td-nama_fakultas">
-                                        <?php echo  $data['nama_fakultas'] ; ?>
-                                    </td>
-                                    <td class="td-keterangan">
-                                        <?php echo  $data['keterangan'] ; ?>
-                                    </td>
-                                    <td class="td-date_created">
-                                        <?php echo  $data['date_created'] ; ?>
-                                    </td>
-                                    <td class="td-date_updated">
-                                        <?php echo  $data['date_updated'] ; ?>
-                                    </td>
-                                    <!--PageComponentEnd-->
-                                    <td class="td-btn">
-                                        <div class="dropdown" >
-                                            <button data-bs-toggle="dropdown" class="dropdown-toggle btn text-primary btn-flat btn-sm">
-                                            <i class="fa fa-bars"></i> 
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <a class="dropdown-item "   href="<?php print_link("akadfakultas/view/$rec_id"); ?>" >
-                                                <i class="fa fa-eye"></i> {{ __('view') }}
-                                            </a>
-                                            <a class="dropdown-item "   href="<?php print_link("akadfakultas/edit/$rec_id"); ?>" >
-                                            <i class="fa fa-edit"></i> {{ __('edit') }}
-                                        </a>
-                                        <a class="dropdown-item record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" href="<?php print_link("akadfakultas/delete/$rec_id"); ?>" >
-                                        <i class="fa fa-times"></i> {{ __('delete') }}
+                                        <a class="btn btn-sm btn-success has-tooltip "    href="<?php print_link("akadfakultas/edit/$rec_id"); ?>" >
+                                        <i class="fa fa-edit"></i> {{ __('edit') }}
                                     </a>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php 
-                        }
-                    ?>
-                    <!--endrecord-->
-                </tbody>
-                <tbody class="search-data"></tbody>
-                <?php
-                    }
-                    else{
-                ?>
-                <tbody class="page-data">
-                    <tr>
-                        <td class="bg-light text-center text-muted animated bounce p-3" colspan="1000">
-                            <i class="fa fa-ban"></i> {{ __('noRecordFound') }}
-                        </td>
-                    </tr>
-                </tbody>
-                <?php
-                    }
-                ?>
-            </table>
-        </div>
-        <?php
-            if($show_footer){
-        ?>
-        <div class=" mt-3">
-            <div class="row align-items-center justify-content-between">    
-                <div class="col-md-auto d-flex">    
-                    <button data-prompt-msg="{{ __('promptDeleteRecords') }}" data-display-style="modal" data-url="<?php print_link("akadfakultas/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
-                    <i class="fa fa-times"></i> {{ __('deleteSelected') }}
-                    </button>
-                </div>
-                <div class="col">   
+                                    <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal"  href="<?php print_link("akadfakultas/delete/$rec_id"); ?>" >
+                                    <i class="fa fa-times"></i> {{ __('delete') }}
+                                </a>
+                            </td>
+                        </tr>
+                        <?php 
+                            }
+                        ?>
+                        <!--endrecord-->
+                    </tbody>
+                    <tbody class="search-data"></tbody>
                     <?php
-                        if($show_pagination == true){
-                        $pager = new Pagination($total_records, $record_count);
-                        $pager->show_page_count = false;
-                        $pager->show_record_count = true;
-                        $pager->show_page_limit =false;
-                        $pager->limit = $limit;
-                        $pager->show_page_number_list = true;
-                        $pager->pager_link_range=5;
-                        $pager->render();
+                        }
+                        else{
+                    ?>
+                    <tbody class="page-data">
+                        <tr>
+                            <td class="bg-light text-center text-muted animated bounce p-3" colspan="1000">
+                                <i class="fa fa-ban"></i> {{ __('noRecordFound') }}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <?php
                         }
                     ?>
+                </table>
+            </div>
+            <?php
+                if($show_footer){
+            ?>
+            <div class=" mt-3">
+                <div class="row align-items-center justify-content-between">    
+                    <div class="col-md-auto d-flex">    
+                        <button data-prompt-msg="{{ __('promptDeleteRecords') }}" data-display-style="modal" data-url="<?php print_link("akadfakultas/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
+                        <i class="fa fa-times"></i> {{ __('deleteSelected') }}
+                        </button>
+                    </div>
+                    <div class="col">   
+                        <?php
+                            if($show_pagination == true){
+                            $pager = new Pagination($total_records, $record_count);
+                            $pager->show_page_count = false;
+                            $pager->show_record_count = true;
+                            $pager->show_page_limit =false;
+                            $pager->limit = $limit;
+                            $pager->show_page_number_list = true;
+                            $pager->pager_link_range=5;
+                            $pager->ajax_page = true;
+                            $pager->render();
+                            }
+                        ?>
+                    </div>
                 </div>
             </div>
+            <?php
+                }
+            ?>
         </div>
-        <?php
-            }
-        ?>
     </div>
-</div>
 </div>
 </div>
 </div>

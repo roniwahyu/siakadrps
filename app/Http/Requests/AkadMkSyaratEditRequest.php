@@ -25,7 +25,7 @@ class AkadMkSyaratEditRequest extends FormRequest
 		
         return [
             
-				"id_prodi" => "filled|numeric",
+				"id_prodi" => "filled",
 				"kode_mk_main" => "filled|string",
 				"kode_mk_syarat" => "filled|string",
 				"nil_mk_syarat" => "filled",

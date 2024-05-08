@@ -4,12 +4,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    $pageTitle = __('akadFakultaDetails'); //set dynamic page title
+    $pageTitle = __('detailFakultas'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
 @section('content')
-<section class="page" data-page-type="view" data-page-url="{{ url()->full() }}">
+<section class="page ajax-page" data-page-type="view" data-page-url="{{ url()->full() }}">
     <?php
         if( $show_header == true ){
     ?>
@@ -43,6 +43,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             $rec_id = ($data['id_fakultas'] ? urlencode($data['id_fakultas']) : null);
                         ?>
                         <div id="page-main-content" class=" px-3 mb-3">
+                            <div class="ajax-page-load-indicator" style="display:none">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
                             <div class="page-data">
                                 <!--PageComponentStart-->
                                 <div class="mb-3 row row justify-content-start g-0">
@@ -112,9 +118,9 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <div class="bg-light mb-1 card-1 p-2 border rounded">
                                         <div class="row align-items-center">
                                             <div class="col">
-                                                <small class="text-muted">{{ __('dateCreated') }}</small>
+                                                <small class="text-muted">{{ __('akaduniversitasIdUniversitas') }}</small>
                                                 <div class="fw-bold">
-                                                    <?php echo  $data['date_created'] ; ?>
+                                                    <?php echo  $data['akaduniversitas_id_universitas'] ; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,9 +130,21 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <div class="bg-light mb-1 card-1 p-2 border rounded">
                                         <div class="row align-items-center">
                                             <div class="col">
-                                                <small class="text-muted">{{ __('dateUpdated') }}</small>
+                                                <small class="text-muted">{{ __('akaduniversitasKodeUniversitas') }}</small>
                                                 <div class="fw-bold">
-                                                    <?php echo  $data['date_updated'] ; ?>
+                                                    <?php echo  $data['akaduniversitas_kode_universitas'] ; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <small class="text-muted">{{ __('akaduniversitasNamaUniversitas') }}</small>
+                                                <div class="fw-bold">
+                                                    <?php echo  $data['akaduniversitas_nama_universitas'] ; ?>
                                                 </div>
                                             </div>
                                         </div>

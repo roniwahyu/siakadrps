@@ -1,9 +1,11 @@
 <?php 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-class CoreUsers extends Model 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+class CoreUsers extends Authenticatable 
 {
+	use Notifiable;
 	
 
 	/**
@@ -20,16 +22,7 @@ class CoreUsers extends Model
      * @var string
      */
 	protected $primaryKey = 'id';
-	
-
-	/**
-     * Table fillable fields
-     *
-     * @var array
-     */
-	protected $fillable = [
-		'ip_address','username','password','email','email_login_hash','activation_selector','activation_code','forgotten_password_selector','forgotten_password_code','forgotten_password_time','remember_selector','remember_code','created_on','last_login','active','first_name','last_name','company','phone','picture','oauth_provider','oauth_uid','created','nim','claimed','wa_activated','email_activated','activated','otp','otp_login_code','otp_backup_code','user_role_id'
-	];
+	protected $fillable = ['ip_address','username','password','email','email_login_hash','activation_selector','activation_code','remember_selector','remember_code','created_on','last_login','active','first_name','last_name','company','phone','picture','oauth_provider','oauth_uid','created','nim','claimed','wa_activated','email_activated','activated','otp','otp_login_code','otp_backup_code','user_role_id','forgotten_password_selector','forgotten_password_code','forgotten_password_time'];
 	public $timestamps = false;
 	
 
@@ -44,7 +37,6 @@ class CoreUsers extends Model
 				id LIKE ?  OR 
 				ip_address LIKE ?  OR 
 				username LIKE ?  OR 
-				password LIKE ?  OR 
 				email LIKE ?  OR 
 				email_login_hash LIKE ?  OR 
 				activation_selector LIKE ?  OR 
@@ -65,7 +57,7 @@ class CoreUsers extends Model
 				otp_backup_code LIKE ? 
 		)';
 		$search_params = [
-			"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+			"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 		];
 		//setting search conditions
 		$query->whereRaw($search_condition, $search_params);
@@ -179,7 +171,6 @@ class CoreUsers extends Model
 			"last_name",
 			"company",
 			"phone",
-			"picture",
 			"oauth_provider",
 			"oauth_uid",
 			"created",
@@ -221,7 +212,127 @@ class CoreUsers extends Model
 			"last_name",
 			"company",
 			"phone",
+			"oauth_provider",
+			"oauth_uid",
+			"created",
+			"nim",
+			"claimed",
+			"wa_activated",
+			"email_activated",
+			"activated",
+			"otp",
+			"otp_login_code",
+			"otp_backup_code",
+			"user_role_id",
+			"date_created",
+			"date_updated" 
+		];
+	}
+	
+
+	/**
+     * return accountedit page fields of the model.
+     * 
+     * @return array
+     */
+	public static function accounteditFields(){
+		return [ 
+			"id",
+			"ip_address",
+			"username",
+			"email_login_hash",
+			"activation_selector",
+			"activation_code",
+			"remember_selector",
+			"remember_code",
+			"created_on",
+			"last_login",
+			"active",
+			"first_name",
+			"last_name",
+			"company",
+			"phone",
 			"picture",
+			"oauth_provider",
+			"oauth_uid",
+			"created",
+			"nim",
+			"claimed",
+			"wa_activated",
+			"email_activated",
+			"activated",
+			"otp",
+			"otp_login_code",
+			"otp_backup_code",
+			"user_role_id" 
+		];
+	}
+	
+
+	/**
+     * return accountview page fields of the model.
+     * 
+     * @return array
+     */
+	public static function accountviewFields(){
+		return [ 
+			"id",
+			"ip_address",
+			"username",
+			"email",
+			"email_login_hash",
+			"activation_selector",
+			"activation_code",
+			"remember_selector",
+			"remember_code",
+			"created_on",
+			"last_login",
+			"active",
+			"first_name",
+			"last_name",
+			"company",
+			"phone",
+			"oauth_provider",
+			"oauth_uid",
+			"created",
+			"nim",
+			"claimed",
+			"wa_activated",
+			"email_activated",
+			"activated",
+			"otp",
+			"otp_login_code",
+			"otp_backup_code",
+			"user_role_id",
+			"date_created",
+			"date_updated" 
+		];
+	}
+	
+
+	/**
+     * return exportAccountview page fields of the model.
+     * 
+     * @return array
+     */
+	public static function exportAccountviewFields(){
+		return [ 
+			"id",
+			"ip_address",
+			"username",
+			"email",
+			"email_login_hash",
+			"activation_selector",
+			"activation_code",
+			"remember_selector",
+			"remember_code",
+			"created_on",
+			"last_login",
+			"active",
+			"first_name",
+			"last_name",
+			"company",
+			"phone",
 			"oauth_provider",
 			"oauth_uid",
 			"created",
@@ -250,7 +361,6 @@ class CoreUsers extends Model
 			"id",
 			"ip_address",
 			"username",
-			"email",
 			"email_login_hash",
 			"activation_selector",
 			"activation_code",
@@ -277,5 +387,40 @@ class CoreUsers extends Model
 			"otp_backup_code",
 			"user_role_id" 
 		];
+	}
+	
+
+	/**
+     * Get current user name
+     * @return string
+     */
+	public function UserName(){
+		return $this->username;
+	}
+	
+
+	/**
+     * Get current user id
+     * @return string
+     */
+	public function UserId(){
+		return $this->id;
+	}
+	public function UserEmail(){
+		return $this->email;
+	}
+	public function UserPhoto(){
+		return $this->picture;
+	}
+	
+
+	/**
+     * Send Password reset link to user email 
+	 * @param string $token
+     * @return string
+     */
+	public function sendPasswordResetNotification($token)
+	{
+		$this->notify(new \App\Notifications\ResetPassword($token));
 	}
 }

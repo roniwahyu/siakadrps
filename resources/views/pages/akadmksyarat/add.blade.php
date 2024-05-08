@@ -36,99 +36,78 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     <div  class="" >
         <div class="container">
             <div class="row ">
-                <div class="col-md-9 comp-grid " >
+                <div class="col-md-4 comp-grid " >
                     <div  class="card card-1 border rounded page-content" >
                         <!--[form-start]-->
-                        <form id="akadmksyarat-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="{{ route('akadmksyarat.store') }}" method="post">
+                        <form id="akadmksyarat-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-vertical needs-validation" action="{{ route('akadmksyarat.store') }}" method="post">
                             @csrf
                             <div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="id_prodi">{{ __('idProdi') }} <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-id_prodi-holder" class=" ">
-                                                <input id="ctrl-id_prodi" data-field="id_prodi"  value="<?php echo get_value('id_prodi') ?>" type="number" placeholder="{{ __('enterIdProdi') }}" step="any"  required="" name="id_prodi"  class="form-control " />
-                                            </div>
-                                        </div>
+                                    <label class="control-label" for="id_prodi">{{ __('idProdi') }} <span class="text-danger">*</span></label>
+                                    <div id="ctrl-id_prodi-holder" class=" "> 
+                                        <select required=""  id="ctrl-id_prodi" data-field="id_prodi" name="id_prodi"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
+                                        <option value="">{{ __('selectAValue') }}</option>
+                                        <?php 
+                                            $options = $comp_model->akadmksyarat_id_prodi_option_list() ?? [];
+                                            foreach($options as $option){
+                                            $value = $option->value;
+                                            $label = $option->label ?? $value;
+                                            $selected = Html::get_field_selected('id_prodi', $value, "");
+                                        ?>
+                                        <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                        <?php echo $label; ?>
+                                        </option>
+                                        <?php
+                                            }
+                                        ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="kode_mk_main">{{ __('kodeMkMain') }} <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-kode_mk_main-holder" class=" ">
-                                                <input id="ctrl-kode_mk_main" data-field="kode_mk_main"  value="<?php echo get_value('kode_mk_main') ?>" type="text" placeholder="{{ __('enterKodeMkMain') }}"  required="" name="kode_mk_main"  class="form-control " />
-                                            </div>
-                                        </div>
+                                    <label class="control-label" for="kode_mk_main">{{ __('kodeMkMain') }} <span class="text-danger">*</span></label>
+                                    <div id="ctrl-kode_mk_main-holder" class=" "> 
+                                        <input id="ctrl-kode_mk_main" data-field="kode_mk_main"  value="<?php echo get_value('kode_mk_main') ?>" type="text" placeholder="{{ __('enterKodeMkMain') }}"  required="" name="kode_mk_main"  class="form-control " />
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="kode_mk_syarat">{{ __('kodeMkSyarat') }} <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-kode_mk_syarat-holder" class=" ">
-                                                <input id="ctrl-kode_mk_syarat" data-field="kode_mk_syarat"  value="<?php echo get_value('kode_mk_syarat') ?>" type="text" placeholder="{{ __('enterKodeMkSyarat') }}"  required="" name="kode_mk_syarat"  class="form-control " />
-                                            </div>
-                                        </div>
+                                    <label class="control-label" for="kode_mk_syarat">{{ __('kodeMkSyarat') }} <span class="text-danger">*</span></label>
+                                    <div id="ctrl-kode_mk_syarat-holder" class=" "> 
+                                        <input id="ctrl-kode_mk_syarat" data-field="kode_mk_syarat"  value="<?php echo get_value('kode_mk_syarat') ?>" type="text" placeholder="{{ __('enterKodeMkSyarat') }}"  required="" name="kode_mk_syarat"  class="form-control " />
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="nil_mk_syarat">{{ __('nilMkSyarat') }} <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-nil_mk_syarat-holder" class=" ">
-                                                <select required=""  id="ctrl-nil_mk_syarat" data-field="nil_mk_syarat" name="nil_mk_syarat"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
-                                                <option value="">{{ __('selectAValue') }}</option>
-                                                <?php
-                                                    $options = Menu::minMkLulus();
-                                                    if(!empty($options)){
-                                                    foreach($options as $option){
-                                                    $value = $option['value'];
-                                                    $label = $option['label'];
-                                                    $selected = Html::get_field_selected('nil_mk_syarat', $value, "");
-                                                ?>
-                                                <option <?php echo $selected ?> value="<?php echo $value ?>">
-                                                <?php echo $label ?>
-                                                </option>                                   
-                                                <?php
-                                                    }
-                                                    }
-                                                ?>
-                                                </select>
-                                            </div>
-                                        </div>
+                                    <label class="control-label" for="nil_mk_syarat">{{ __('nilMkSyarat') }} <span class="text-danger">*</span></label>
+                                    <div id="ctrl-nil_mk_syarat-holder" class=" "> 
+                                        <select required=""  id="ctrl-nil_mk_syarat" data-field="nil_mk_syarat" name="nil_mk_syarat"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
+                                        <option value="">{{ __('selectAValue') }}</option>
+                                        <?php
+                                            $options = Menu::minMkLulus();
+                                            if(!empty($options)){
+                                            foreach($options as $option){
+                                            $value = $option['value'];
+                                            $label = $option['label'];
+                                            $selected = Html::get_field_selected('nil_mk_syarat', $value, "");
+                                        ?>
+                                        <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                        <?php echo $label ?>
+                                        </option>                                   
+                                        <?php
+                                            }
+                                            }
+                                        ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="nil_angka_mk_syarat">{{ __('nilAngkaMkSyarat') }} <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-nil_angka_mk_syarat-holder" class=" ">
-                                                <input id="ctrl-nil_angka_mk_syarat" data-field="nil_angka_mk_syarat"  value="<?php echo get_value('nil_angka_mk_syarat') ?>" type="number" placeholder="{{ __('enterNilAngkaMkSyarat') }}" step="0.1"  required="" name="nil_angka_mk_syarat"  class="form-control " />
-                                            </div>
-                                        </div>
+                                    <label class="control-label" for="nil_angka_mk_syarat">{{ __('nilAngkaMkSyarat') }} <span class="text-danger">*</span></label>
+                                    <div id="ctrl-nil_angka_mk_syarat-holder" class=" "> 
+                                        <input id="ctrl-nil_angka_mk_syarat" data-field="nil_angka_mk_syarat"  value="<?php echo get_value('nil_angka_mk_syarat') ?>" type="number" placeholder="{{ __('enterNilAngkaMkSyarat') }}" step="0.1"  required="" name="nil_angka_mk_syarat"  class="form-control " />
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="urut_syarat">{{ __('urutSyarat') }} </label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div id="ctrl-urut_syarat-holder" class=" ">
-                                                <input id="ctrl-urut_syarat" data-field="urut_syarat"  value="<?php echo get_value('urut_syarat') ?>" type="number" placeholder="{{ __('enterUrutSyarat') }}" step="any"  name="urut_syarat"  class="form-control " />
-                                            </div>
-                                        </div>
+                                    <label class="control-label" for="urut_syarat">{{ __('urutSyarat') }} </label>
+                                    <div id="ctrl-urut_syarat-holder" class=" "> 
+                                        <input id="ctrl-urut_syarat" data-field="urut_syarat"  value="<?php echo get_value('urut_syarat') ?>" type="number" placeholder="{{ __('enterUrutSyarat') }}" step="any"  name="urut_syarat"  class="form-control " />
                                     </div>
                                 </div>
                             </div>
@@ -143,6 +122,24 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <!--[form-button-end]-->
                         </form>
                         <!--[form-end]-->
+                    </div>
+                </div>
+                <div class="col-md-8 comp-grid " >
+                    <div class=" ">
+                        <?php
+                            $params = [ 'limit' => 25]; //new query param
+                            $query = array_merge(request()->query(), $params);
+                            $queryParams = http_build_query($query);
+                            $url = url("akadmksyarat/index?$queryParams");
+                        ?>
+                        <div class="ajax-inline-page" data-url="{{ $url }}" >
+                            <div class="ajax-page-load-indicator">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

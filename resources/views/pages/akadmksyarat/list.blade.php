@@ -9,12 +9,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
     $total_records = $records->total();
     $limit = $records->perPage();
     $record_count = count($records);
-    $pageTitle = __('akadMkSyarat'); //set dynamic page title
+    $pageTitle = __('mkPrasyarat'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
 @section('content')
-<section class="page" data-page-type="list" data-page-url="{{ url()->full() }}">
+<section class="page ajax-page" data-page-type="list" data-page-url="{{ url()->full() }}">
     <?php
         if( $show_header == true ){
     ?>
@@ -23,13 +23,13 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
             <div class="row justify-content-between align-items-center gap-3">
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">{{ __('akadMkSyarat') }}</div>
+                        <div class="h4 font-weight-bold text-primary">{{ __('mkPrasyarat') }}</div>
                     </div>
                 </div>
                 <div class="col-auto  " >
-                    <a  class="btn btn-primary btn-block" href="<?php print_link("akadmksyarat/add", true) ?>" >
+                    <a  class="btn btn-success btn-block" href="<?php print_link("akadmksyarat/add", true) ?>" >
                     <i class="fa fa-plus"></i>                              
-                    {{ __('addNewAkadMkSyarat') }} 
+                    {{ __('addNewPrasyarat') }} 
                 </a>
             </div>
             <div class="col-md-3  " >
@@ -55,6 +55,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div  class=" page-content" >
                     <div id="akadmksyarat-list-records">
                         <div id="page-main-content" class="table-responsive">
+                            <div class="ajax-page-load-indicator" style="display:none">
+                                <div class="text-center d-flex justify-content-center load-indicator">
+                                    <span class="loader mr-3"></span>
+                                    <span class="fw-bold">{{ __('loading') }}</span>
+                                </div>
+                            </div>
                             <?php Html::page_bread_crumb("/akadmksyarat/", $field_name, $field_value); ?>
                             <?php Html::display_page_errors($errors); ?>
                             <div class="filter-tags mb-2">
@@ -75,8 +81,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <th class="td-nil_mk_syarat" > {{ __('nilMkSyarat') }}</th>
                                         <th class="td-nil_angka_mk_syarat" > {{ __('nilAngkaMkSyarat') }}</th>
                                         <th class="td-urut_syarat" > {{ __('urutSyarat') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -118,12 +122,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </td>
                                         <td class="td-urut_syarat">
                                             <?php echo  $data['urut_syarat'] ; ?>
-                                        </td>
-                                        <td class="td-date_created">
-                                            <?php echo  $data['date_created'] ; ?>
-                                        </td>
-                                        <td class="td-date_updated">
-                                            <?php echo  $data['date_updated'] ; ?>
                                         </td>
                                         <!--PageComponentEnd-->
                                         <td class="td-btn">
@@ -187,6 +185,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             $pager->limit = $limit;
                             $pager->show_page_number_list = true;
                             $pager->pager_link_range=5;
+                            $pager->ajax_page = true;
                             $pager->render();
                             }
                         ?>

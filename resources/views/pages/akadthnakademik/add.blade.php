@@ -52,7 +52,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <select  id="ctrl-id_universitas" data-field="id_universitas" name="id_universitas"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                                 <option value="">{{ __('selectAValue') }}</option>
                                                 <?php 
-                                                    $options = $comp_model->universitas_id_option_list() ?? [];
+                                                    $options = $comp_model->id_universitas_option_list() ?? [];
                                                     foreach($options as $option){
                                                     $value = $option->value;
                                                     $label = $option->label ?? $value;

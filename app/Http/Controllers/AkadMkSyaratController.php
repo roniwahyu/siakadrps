@@ -20,7 +20,7 @@ class AkadMkSyaratController extends Controller
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.akadmksyarat.list";
 		$query = AkadMkSyarat::query();
-		$limit = $request->limit ?? 10;
+		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
 			AkadMkSyarat::search($query, $search); // search table records

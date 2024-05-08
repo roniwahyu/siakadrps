@@ -11,56 +11,56 @@
 		],
 		
 		[
-			'path' => 'akadfakultas',
-			'label' => __('akadFakultas'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'akadjenjang',
-			'label' => __('akadJenjang'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'akadkurikulum',
-			'label' => __('akadKurikulum'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'akadmk',
-			'label' => __('akadMk'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'akadmksyarat',
-			'label' => __('akadMkSyarat'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'akadprodi',
-			'label' => __('akadProdi'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
 			'path' => 'akadpt',
-			'label' => __('akadPt'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'akadthnakademik',
-			'label' => __('akadThnAkademik'), 
+			'label' => __('setupPt'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
 		[
 			'path' => 'akaduniversitas',
-			'label' => __('akadUniversitas'), 
+			'label' => __('universitas'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadfakultas',
+			'label' => __('fakultas'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadprodi',
+			'label' => __('prodi'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadjenjang',
+			'label' => __('jenjang'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadthnakademik',
+			'label' => __('tahunAkademik'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadkurikulum',
+			'label' => __('kurikulum'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadmk',
+			'label' => __('mataKuliah'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadmksyarat',
+			'label' => __('mkPrasyarat'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		

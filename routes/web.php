@@ -14,12 +14,41 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
+
+
+	Route::get('', 'IndexController@index')->name('index')->middleware(['redirect.to.home']);
+	Route::get('index/login', 'IndexController@login')->name('login');
 	
-	Route::get('', 'HomeController@index')->name('index');
+	Route::post('auth/login', 'AuthController@login')->name('auth.login');
+	Route::any('auth/logout', 'AuthController@logout')->name('logout')->middleware(['auth']);
+
+	Route::get('auth/accountcreated', 'AuthController@accountcreated')->name('accountcreated');
+	Route::get('auth/accountpending', 'AuthController@accountpending')->name('accountpending');
+	Route::get('auth/accountblocked', 'AuthController@accountblocked')->name('accountblocked');
+	Route::get('auth/accountinactive', 'AuthController@accountinactive')->name('accountinactive');
+
+
+	
+	Route::get('index/register', 'AuthController@register')->name('auth.register')->middleware(['redirect.to.home']);
+	Route::post('index/register', 'AuthController@register_store')->name('auth.register_store');
+		
+	Route::post('auth/login', 'AuthController@login')->name('auth.login');
+	Route::get('auth/password/forgotpassword', 'AuthController@showForgotPassword')->name('password.forgotpassword');
+	Route::post('auth/password/sendemail', 'AuthController@sendPasswordResetLink')->name('password.email');
+	Route::get('auth/password/reset', 'AuthController@showResetPassword')->name('password.reset.token');
+	Route::post('auth/password/resetpassword', 'AuthController@resetPassword')->name('password.resetpassword');
+	Route::get('auth/password/resetcompleted', 'AuthController@passwordResetCompleted')->name('password.resetcompleted');
+	Route::get('auth/password/linksent', 'AuthController@passwordResetLinkSent')->name('password.resetlinksent');
+	
+
+/**
+ * All routes which requires auth
+ */
+Route::middleware(['auth'])->group(function () {
+		
 	Route::get('home', 'HomeController@index')->name('home');
 
-
-
+	
 
 /* routes for AkadFakultas Controller */
 	Route::get('akadfakultas', 'AkadFakultasController@index')->name('akadfakultas.index');
@@ -144,6 +173,9 @@ use Illuminate\Support\Facades\Mail;
 	Route::get('coreusers', 'CoreUsersController@index')->name('coreusers.index');
 	Route::get('coreusers/index/{filter?}/{filtervalue?}', 'CoreUsersController@index')->name('coreusers.index');	
 	Route::get('coreusers/view/{rec_id}', 'CoreUsersController@view')->name('coreusers.view');	
+	Route::any('account/edit', 'AccountController@edit')->name('account.edit');	
+	Route::get('account', 'AccountController@index');	
+	Route::post('account/changepassword', 'AccountController@changepassword')->name('account.changepassword');	
 	Route::get('coreusers/add', 'CoreUsersController@add')->name('coreusers.add');
 	Route::post('coreusers/add', 'CoreUsersController@store')->name('coreusers.store');
 		
@@ -333,13 +365,6 @@ use Illuminate\Support\Facades\Mail;
 		
 	Route::any('rpssubcpmkasesmen/edit/{rec_id}', 'RpsSubCpmkAsesmenController@edit')->name('rpssubcpmkasesmen.edit');	
 	Route::get('rpssubcpmkasesmen/delete/{rec_id}', 'RpsSubCpmkAsesmenController@delete');
-
-/**
- * All routes which requires auth
- */
-Route::middleware(['auth'])->group(function () {
-	
-	
 });
 
 
@@ -348,23 +373,47 @@ Route::get('componentsdata/universitas_id_option_list',  function(Request $reque
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->universitas_id_option_list($request);
 	}
-);
+)->middleware(['auth']);
 	
 Route::get('componentsdata/id_prodi_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_prodi_option_list($request);
 	}
-);
+)->middleware(['auth']);
 	
 Route::get('componentsdata/id_siakad_kurikulum_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_siakad_kurikulum_option_list($request);
 	}
-);
+)->middleware(['auth']);
+	
+Route::get('componentsdata/akadmksyarat_id_prodi_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->akadmksyarat_id_prodi_option_list($request);
+	}
+)->middleware(['auth']);
 	
 Route::get('componentsdata/fakultas_id_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->fakultas_id_option_list($request);
+	}
+)->middleware(['auth']);
+	
+Route::get('componentsdata/id_universitas_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->id_universitas_option_list($request);
+	}
+)->middleware(['auth']);
+	
+Route::get('componentsdata/coreusers_username_value_exist',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->coreusers_username_value_exist($request);
+	}
+);
+	
+Route::get('componentsdata/coreusers_email_value_exist',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->coreusers_email_value_exist($request);
 	}
 );
 	
@@ -372,31 +421,31 @@ Route::get('componentsdata/role_id_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->role_id_option_list($request);
 	}
-);
+)->middleware(['auth']);
 	
 Route::get('componentsdata/id_jenis_cp_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_jenis_cp_option_list($request);
 	}
-);
+)->middleware(['auth']);
 	
 Route::get('componentsdata/id_mk_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_mk_option_list($request);
 	}
-);
+)->middleware(['auth']);
 	
 Route::get('componentsdata/id_rps_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_rps_option_list($request);
 	}
-);
+)->middleware(['auth']);
 	
 Route::get('componentsdata/id_cpmk_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_cpmk_option_list($request);
 	}
-);
+)->middleware(['auth']);
 
 
 Route::post('fileuploader/upload/{fieldname}', 'FileUploaderController@upload');

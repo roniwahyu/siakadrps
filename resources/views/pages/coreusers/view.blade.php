@@ -242,20 +242,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <div class="bg-light mb-1 card-1 p-2 border rounded">
                                             <div class="row align-items-center">
                                                 <div class="col">
-                                                    <small class="text-muted">{{ __('picture') }}</small>
-                                                    <div class="fw-bold">
-                                                        <?php 
-                                                            Html :: page_img($data['picture'], 'auto', 'auto', "", 1); 
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                            <div class="row align-items-center">
-                                                <div class="col">
                                                     <small class="text-muted">{{ __('oauthProvider') }}</small>
                                                     <div class="fw-bold">
                                                         <?php echo  $data['oauth_provider'] ; ?>

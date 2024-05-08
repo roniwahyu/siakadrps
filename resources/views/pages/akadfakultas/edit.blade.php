@@ -4,7 +4,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    $pageTitle = __('editAkadFakulta'); //set dynamic page title
+    $pageTitle = __('editFakultas'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
@@ -101,7 +101,27 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-keterangan-holder" class=" ">
-                                            <input id="ctrl-keterangan" data-field="keterangan"  value="<?php  echo $data['keterangan']; ?>" type="text" placeholder="{{ __('enterKeterangan') }}"  name="keterangan"  class="form-control " />
+                                            <textarea placeholder="{{ __('enterKeterangan') }}" id="ctrl-keterangan" data-field="keterangan"  rows="5" name="keterangan" class=" form-control"><?php  echo $data['keterangan']; ?></textarea>
+                                            <!--<div class="invalid-feedback animated bounceIn text-center">{{ __('pleaseEnterText') }}</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label class="control-label" for="user_role_id">{{ __('enterTheCode') }} <span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="d-flex">
+                                            <div>
+                                                <button type="button" data-captcha="{{ captcha_src('flat') }}" class="btn btn-sm btn-light fw-bold">
+                                                <?php echo Captcha::img('flat'); ?>
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <input class="form-control" required="" placeholder="{{ __('enterTheCode') }}" name="captcha" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

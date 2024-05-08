@@ -1,6 +1,6 @@
 # Getting Started with siakadrps2
-# siakadrps
-SIM Akademik Khusus Kurikulum dan RPS
+
+### Generated with [RadSystems](https://radsystems.io)
 
 ## Frameworks
 
@@ -8,4 +8,3 @@ SIM Akademik Khusus Kurikulum dan RPS
 
 - ### Database ORM - [Eloquent ORM](https://laravel.com/docs/5.0/eloquent)
 - ### Default Database - [MySQL](https://www.mysql.com/)
-- ### CSS Framework - [Bootstrap 5](https://getbootstrap.com/)
