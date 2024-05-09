@@ -41,11 +41,14 @@ class AkadThnAkademik extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				id_thn_akademik LIKE ?  OR 
-				semester_periode LIKE ? 
+				akad_thn_akademik.id_thn_akademik LIKE ?  OR 
+				akad_universitas.kode_universitas LIKE ?  OR 
+				akad_universitas.nama_universitas LIKE ?  OR 
+				akad_thn_akademik.semester_periode LIKE ?  OR 
+				akad_universitas.id_universitas LIKE ? 
 		)';
 		$search_params = [
-			"%$text%","%$text%"
+			"%$text%","%$text%","%$text%","%$text%","%$text%"
 		];
 		//setting search conditions
 		$query->whereRaw($search_condition, $search_params);
@@ -59,12 +62,13 @@ class AkadThnAkademik extends Model
      */
 	public static function listFields(){
 		return [ 
-			"id_thn_akademik",
-			"id_universitas",
-			"semester_periode",
-			"date_created",
-			"date_updated",
-			"isactive" 
+			"akad_thn_akademik.id_thn_akademik AS id_thn_akademik",
+			"akad_thn_akademik.id_universitas AS id_universitas",
+			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
+			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
+			"akad_thn_akademik.semester_periode AS semester_periode",
+			"akad_thn_akademik.isactive AS isactive",
+			"akad_universitas.id_universitas AS akaduniversitas_id_universitas" 
 		];
 	}
 	
@@ -76,12 +80,13 @@ class AkadThnAkademik extends Model
      */
 	public static function exportListFields(){
 		return [ 
-			"id_thn_akademik",
-			"id_universitas",
-			"semester_periode",
-			"date_created",
-			"date_updated",
-			"isactive" 
+			"akad_thn_akademik.id_thn_akademik AS id_thn_akademik",
+			"akad_thn_akademik.id_universitas AS id_universitas",
+			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
+			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
+			"akad_thn_akademik.semester_periode AS semester_periode",
+			"akad_thn_akademik.isactive AS isactive",
+			"akad_universitas.id_universitas AS akaduniversitas_id_universitas" 
 		];
 	}
 	
@@ -93,12 +98,13 @@ class AkadThnAkademik extends Model
      */
 	public static function viewFields(){
 		return [ 
-			"id_thn_akademik",
-			"id_universitas",
-			"semester_periode",
-			"date_created",
-			"date_updated",
-			"isactive" 
+			"akad_thn_akademik.id_thn_akademik AS id_thn_akademik",
+			"akad_thn_akademik.id_universitas AS id_universitas",
+			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
+			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
+			"akad_thn_akademik.semester_periode AS semester_periode",
+			"akad_thn_akademik.isactive AS isactive",
+			"akad_universitas.id_universitas AS akaduniversitas_id_universitas" 
 		];
 	}
 	
@@ -110,12 +116,13 @@ class AkadThnAkademik extends Model
      */
 	public static function exportViewFields(){
 		return [ 
-			"id_thn_akademik",
-			"id_universitas",
-			"semester_periode",
-			"date_created",
-			"date_updated",
-			"isactive" 
+			"akad_thn_akademik.id_thn_akademik AS id_thn_akademik",
+			"akad_thn_akademik.id_universitas AS id_universitas",
+			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
+			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
+			"akad_thn_akademik.semester_periode AS semester_periode",
+			"akad_thn_akademik.isactive AS isactive",
+			"akad_universitas.id_universitas AS akaduniversitas_id_universitas" 
 		];
 	}
 	
@@ -127,10 +134,10 @@ class AkadThnAkademik extends Model
      */
 	public static function editFields(){
 		return [ 
-			"id_thn_akademik",
 			"id_universitas",
 			"semester_periode",
-			"isactive" 
+			"isactive",
+			"id_thn_akademik" 
 		];
 	}
 }

@@ -77,7 +77,7 @@ class ComponentsData{
      * @return array
      */
 	function id_universitas_option_list(){
-		$sqltext = "SELECT id_universitas as value, id_universitas as label FROM akad_universitas";
+		$sqltext = "SELECT id_universitas as value, concat('(',kode_universitas,') ',nama_universitas) as label FROM akad_universitas";
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;

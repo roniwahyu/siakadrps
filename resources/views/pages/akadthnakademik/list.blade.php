@@ -76,9 +76,9 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </th>
                                         <th class="td-id_thn_akademik" > {{ __('idThnAkademik') }}</th>
                                         <th class="td-id_universitas" > {{ __('idUniversitas') }}</th>
+                                        <th class="td-kode_universitas" > {{ __('akaduniversitasKodeUniversitas') }}</th>
+                                        <th class="td-nama_universitas" > {{ __('akaduniversitasNamaUniversitas') }}</th>
                                         <th class="td-semester_periode" > {{ __('semesterPeriode') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-isactive" > {{ __('isactive') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
@@ -109,14 +109,14 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <i class="fa fa-eye"></i> <?php echo "Akad Universitas" ?>
                                         </a>
                                     </td>
+                                    <td class="td-akaduniversitas_kode_universitas">
+                                        <?php echo  $data['akaduniversitas_kode_universitas'] ; ?>
+                                    </td>
+                                    <td class="td-akaduniversitas_nama_universitas">
+                                        <?php echo  $data['akaduniversitas_nama_universitas'] ; ?>
+                                    </td>
                                     <td class="td-semester_periode">
                                         <?php echo  $data['semester_periode'] ; ?>
-                                    </td>
-                                    <td class="td-date_created">
-                                        <?php echo  $data['date_created'] ; ?>
-                                    </td>
-                                    <td class="td-date_updated">
-                                        <?php echo  $data['date_updated'] ; ?>
                                     </td>
                                     <td class="td-isactive">
                                         <?php echo  $data['isactive'] ; ?>

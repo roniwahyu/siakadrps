@@ -25,6 +25,7 @@ class AkadThnAkademikController extends Controller
 			$search = trim($request->search);
 			AkadThnAkademik::search($query, $search); // search table records
 		}
+		$query->join("akad_universitas", "akad_thn_akademik.id_universitas", "=", "akad_universitas.id_universitas");
 		$orderby = $request->orderby ?? "akad_thn_akademik.id_thn_akademik";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);
@@ -43,6 +44,7 @@ class AkadThnAkademikController extends Controller
      */
 	function view($rec_id = null){
 		$query = AkadThnAkademik::query();
+		$query->join("akad_universitas", "akad_thn_akademik.id_universitas", "=", "akad_universitas.id_universitas");
 		$record = $query->findOrFail($rec_id, AkadThnAkademik::viewFields());
 		return $this->renderView("pages.akadthnakademik.view", ["data" => $record]);
 	}
