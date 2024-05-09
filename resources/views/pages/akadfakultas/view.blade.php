@@ -82,6 +82,30 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <div class="bg-light mb-1 card-1 p-2 border rounded">
                                         <div class="row align-items-center">
                                             <div class="col">
+                                                <small class="text-muted">{{ __('akaduniversitasKodeUniversitas') }}</small>
+                                                <div class="fw-bold">
+                                                    <?php echo  $data['akaduniversitas_kode_universitas'] ; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <small class="text-muted">{{ __('akaduniversitasNamaUniversitas') }}</small>
+                                                <div class="fw-bold">
+                                                    <?php echo  $data['akaduniversitas_nama_universitas'] ; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                        <div class="row align-items-center">
+                                            <div class="col">
                                                 <small class="text-muted">{{ __('kodeFakultas') }}</small>
                                                 <div class="fw-bold">
                                                     <?php echo  $data['kode_fakultas'] ; ?>
@@ -109,42 +133,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <small class="text-muted">{{ __('keterangan') }}</small>
                                                 <div class="fw-bold">
                                                     <?php echo  $data['keterangan'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">{{ __('akaduniversitasIdUniversitas') }}</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['akaduniversitas_id_universitas'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">{{ __('akaduniversitasKodeUniversitas') }}</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['akaduniversitas_kode_universitas'] ; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <small class="text-muted">{{ __('akaduniversitasNamaUniversitas') }}</small>
-                                                <div class="fw-bold">
-                                                    <?php echo  $data['akaduniversitas_nama_universitas'] ; ?>
                                                 </div>
                                             </div>
                                         </div>

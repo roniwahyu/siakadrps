@@ -25,6 +25,7 @@ class AkadProdiController extends Controller
 			$search = trim($request->search);
 			AkadProdi::search($query, $search); // search table records
 		}
+		$query->join("akad_fakultas", "akad_prodi.fakultas_id", "=", "akad_fakultas.id_fakultas");
 		$orderby = $request->orderby ?? "akad_prodi.id_prodi";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);
@@ -43,6 +44,7 @@ class AkadProdiController extends Controller
      */
 	function view($rec_id = null){
 		$query = AkadProdi::query();
+		$query->join("akad_fakultas", "akad_prodi.fakultas_id", "=", "akad_fakultas.id_fakultas");
 		$record = $query->findOrFail($rec_id, AkadProdi::viewFields());
 		return $this->renderView("pages.akadprodi.view", ["data" => $record]);
 	}

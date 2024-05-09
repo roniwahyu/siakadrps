@@ -27,7 +27,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     </div>
                 </div>
                 <div class="col-auto  " >
-                    <a  class="btn btn-primary btn-block" href="<?php print_link("audits/add", true) ?>" >
+                    <a  class="btn " href="<?php print_link("audits/add") ?>" >
                     <i class="fa fa-plus"></i>                              
                     {{ __('addNewAudit') }} 
                 </a>
@@ -69,11 +69,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <table class="table table-hover table-striped table-sm text-left">
                                 <thead class="table-header ">
                                     <tr>
-                                        <th class="td-checkbox">
-                                        <label class="form-check-label">
-                                        <input class="toggle-check-all form-check-input" type="checkbox" />
-                                        </label>
-                                        </th>
                                         <th class="td-id" > {{ __('id') }}</th>
                                         <th class="td-user_type" > {{ __('userType') }}</th>
                                         <th class="td-user_id" > {{ __('userId') }}</th>
@@ -105,11 +100,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         $counter++;
                                     ?>
                                     <tr>
-                                        <td class=" td-checkbox">
-                                            <label class="form-check-label">
-                                            <input class="optioncheck form-check-input" name="optioncheck[]" value="<?php echo $data['id'] ?>" type="checkbox" />
-                                            </label>
-                                        </td>
                                         <!--PageComponentStart-->
                                         <td class="td-id">
                                             <a href="<?php print_link("/audits/view/$data[id]") ?>"><?php echo $data['id']; ?></a>
@@ -172,7 +162,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <a class="dropdown-item "   href="<?php print_link("audits/edit/$rec_id"); ?>" >
                                                 <i class="fa fa-edit"></i> {{ __('edit') }}
                                             </a>
-                                            <a class="dropdown-item record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" href="<?php print_link("audits/delete/$rec_id"); ?>" >
+                                            <a class="dropdown-item "   href="<?php print_link("audits/delete/$rec_id"); ?>" >
                                             <i class="fa fa-times"></i> {{ __('delete') }}
                                         </a>
                                     </ul>

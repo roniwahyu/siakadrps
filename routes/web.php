@@ -148,12 +148,7 @@ Route::middleware(['auth'])->group(function () {
 /* routes for Audits Controller */
 	Route::get('audits', 'AuditsController@index')->name('audits.index');
 	Route::get('audits/index/{filter?}/{filtervalue?}', 'AuditsController@index')->name('audits.index');	
-	Route::get('audits/view/{rec_id}', 'AuditsController@view')->name('audits.view');	
-	Route::get('audits/add', 'AuditsController@add')->name('audits.add');
-	Route::post('audits/add', 'AuditsController@store')->name('audits.store');
-		
-	Route::any('audits/edit/{rec_id}', 'AuditsController@edit')->name('audits.edit');	
-	Route::get('audits/delete/{rec_id}', 'AuditsController@delete');
+	Route::get('audits/view/{rec_id}', 'AuditsController@view')->name('audits.view');
 
 /* routes for CorePermissions Controller */
 	Route::get('corepermissions', 'CorePermissionsController@index')->name('corepermissions.index');

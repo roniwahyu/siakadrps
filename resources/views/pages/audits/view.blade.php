@@ -244,7 +244,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <a class="btn btn-sm btn-success has-tooltip "   title="{{ __('edit') }}" href="<?php print_link("audits/edit/$rec_id"); ?>" >
                                     <i class="fa fa-edit"></i> {{ __('edit') }}
                                 </a>
-                                <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" title="{{ __('delete') }}" href="<?php print_link("audits/delete/$rec_id?redirect=audits"); ?>" >
+                                <a class="btn btn-sm btn-danger has-tooltip "   title="{{ __('delete') }}" href="<?php print_link("audits/delete/$rec_id"); ?>" >
                                 <i class="fa fa-times"></i> {{ __('delete') }}
                             </a>
                         </div>

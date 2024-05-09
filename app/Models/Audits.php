@@ -28,7 +28,6 @@ class Audits extends Model
      * @var array
      */
 	protected $fillable = [
-		'user_type','user_id','event','auditable_type','auditable_id','old_values','new_values','url','ip_address','user_agent','tags'
 	];
 	public $timestamps = false;
 	
@@ -164,29 +163,6 @@ class Audits extends Model
 			"updated_at",
 			"date_created",
 			"date_updated" 
-		];
-	}
-	
-
-	/**
-     * return edit page fields of the model.
-     * 
-     * @return array
-     */
-	public static function editFields(){
-		return [ 
-			"id",
-			"user_type",
-			"user_id",
-			"event",
-			"auditable_type",
-			"auditable_id",
-			"old_values",
-			"new_values",
-			"url",
-			"ip_address",
-			"user_agent",
-			"tags" 
 		];
 	}
 }

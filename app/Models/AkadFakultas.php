@@ -102,12 +102,12 @@ class AkadFakultas extends Model
 		return [ 
 			"akad_fakultas.id_fakultas AS id_fakultas",
 			"akad_fakultas.universitas_id AS universitas_id",
+			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
+			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
 			"akad_fakultas.kode_fakultas AS kode_fakultas",
 			"akad_fakultas.nama_fakultas AS nama_fakultas",
 			"akad_fakultas.keterangan AS keterangan",
-			"akad_universitas.id_universitas AS akaduniversitas_id_universitas",
-			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
-			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas" 
+			"akad_universitas.id_universitas AS akaduniversitas_id_universitas" 
 		];
 	}
 	
@@ -121,12 +121,12 @@ class AkadFakultas extends Model
 		return [ 
 			"akad_fakultas.id_fakultas AS id_fakultas",
 			"akad_fakultas.universitas_id AS universitas_id",
+			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
+			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
 			"akad_fakultas.kode_fakultas AS kode_fakultas",
 			"akad_fakultas.nama_fakultas AS nama_fakultas",
 			"akad_fakultas.keterangan AS keterangan",
-			"akad_universitas.id_universitas AS akaduniversitas_id_universitas",
-			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
-			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas" 
+			"akad_universitas.id_universitas AS akaduniversitas_id_universitas" 
 		];
 	}
 	
