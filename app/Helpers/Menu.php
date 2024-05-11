@@ -29,12 +29,6 @@
 		],
 		
 		[
-			'path' => 'akadprodi',
-			'label' => __('prodi'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
 			'path' => 'akadjenjang',
 			'label' => __('jenjang'), 
 			'icon' => '<i class="fa fa-globe"></i>'
@@ -194,6 +188,12 @@
 			'path' => 'rpssubcpmkasesmen',
 			'label' => __('rpsSubCpmkAsesmen'), 
 			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadprodi',
+			'label' => __('akadProdi'), 
+			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;
 	}
@@ -203,11 +203,11 @@
 		return [
 		[
 			'value' => '1', 
-			'label' => __('1'), 
+			'label' => __('aktif'), 
 		],
 		[
 			'value' => '0', 
-			'label' => __('0'), 
+			'label' => __('nonAktif'), 
 		],] ;
 	}
 	
@@ -315,11 +315,11 @@
 		return [
 		[
 			'value' => '1', 
-			'label' => __('aktif'), 
+			'label' => __('1'), 
 		],
 		[
 			'value' => '0', 
-			'label' => __('nonAktif'), 
+			'label' => __('0'), 
 		],] ;
 	}
 	

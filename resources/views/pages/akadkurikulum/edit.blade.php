@@ -97,12 +97,10 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="isactive">{{ __('isactive') }} </label>
+                                        <label class="control-label" for="isactive">{{ __('aktif') }} </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-isactive-holder" class=" ">
-                                            <select  id="ctrl-isactive" data-field="isactive" name="isactive"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
-                                            <option value="">{{ __('selectAValue') }}</option>
                                             <?php
                                                 $options = Menu::isactive();
                                                 $field_value = $data['isactive'];
@@ -110,16 +108,17 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 foreach($options as $option){
                                                 $value = $option['value'];
                                                 $label = $option['label'];
-                                                $selected = Html::get_record_selected($field_value, $value);
+                                                //check if value is among checked options
+                                                $checked = Html::get_record_checked($field_value, $value);
                                             ?>
-                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
-                                            <?php echo $label ?>
-                                            </option>                                   
+                                            <label class="form-check">
+                                            <input class="form-check-input" <?php echo $checked ?>  value="<?php echo $value ?>" type="radio"   name="isactive" />
+                                            <span class="form-check-label"><?php echo $label ?></span>
+                                            </label>
                                             <?php
                                                 }
                                                 }
                                             ?>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>

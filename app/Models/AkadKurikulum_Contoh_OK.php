@@ -67,10 +67,9 @@ class AkadKurikulum extends Model
 			"akad_kurikulum.kode_kurikulum AS kode_kurikulum",
 			"akad_kurikulum.nm_kurikulum AS nm_kurikulum",
 			"akad_kurikulum.id_prodi AS id_prodi",
-			"akad_prodi.kode_prodi AS akadprodi_kode_prodi",
-			"akad_prodi.nama_prodi AS akadprodi_nama_prodi",
-			"akad_kurikulum.isactive AS isactive",
-			"akad_prodi.id_prodi AS akadprodi_id_prodi" 
+			DB::raw("concat('(',akad_prodi.kode_prodi,') ',akad_prodi.nama_prodi) AS akadprodi_nama_prodi"),
+			DB::raw("if(akad_kurikulum.isactive=1,'Aktif','Non Aktif') AS isactive")	
+			
 		];
 	}
 	
@@ -149,11 +148,11 @@ class AkadKurikulum extends Model
      */
 	public static function editFields(){
 		return [ 
+			"id_siakad_kurikulum",
 			"kode_kurikulum",
 			"nm_kurikulum",
 			"id_prodi",
-			"isactive",
-			"id_siakad_kurikulum" 
+			"isactive" 
 		];
 	}
 }

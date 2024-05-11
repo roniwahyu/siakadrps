@@ -132,31 +132,105 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-12">
+                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <small class="text-muted">{{ __('akadprodiIdProdi') }}</small>
+                                                <div class="fw-bold">
+                                                    <?php echo  $data['akadprodi_id_prodi'] ; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <small class="text-muted">{{ __('akadprodiFakultasId') }}</small>
+                                                <div class="fw-bold">
+                                                    <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("akadfakultas/view/$data[fakultas_id]?subpage=1") ?>">
+                                                    <i class="fa fa-eye"></i> <?php echo "Akad Fakultas Detail" ?>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <!--PageComponentEnd-->
-                            <div class="d-flex align-items-center gap-2">
-                                <a class="btn btn-sm btn-success has-tooltip "   title="{{ __('edit') }}" href="<?php print_link("akadkurikulum/edit/$rec_id"); ?>" >
-                                <i class="fa fa-edit"></i> {{ __('edit') }}
-                            </a>
-                            <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" title="{{ __('delete') }}" href="<?php print_link("akadkurikulum/delete/$rec_id?redirect=akadkurikulum"); ?>" >
-                            <i class="fa fa-times"></i> {{ __('delete') }}
+                            <div class="col-12">
+                                <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <small class="text-muted">{{ __('akadprodiKodeProdi') }}</small>
+                                            <div class="fw-bold">
+                                                <?php echo  $data['akadprodi_kode_prodi'] ; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <small class="text-muted">{{ __('akadprodiNamaProdi') }}</small>
+                                            <div class="fw-bold">
+                                                <?php echo  $data['akadprodi_nama_prodi'] ; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <small class="text-muted">{{ __('akadprodiDateCreated') }}</small>
+                                            <div class="fw-bold">
+                                                <?php echo  $data['akadprodi_date_created'] ; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <small class="text-muted">{{ __('akadprodiDateUpdated') }}</small>
+                                            <div class="fw-bold">
+                                                <?php echo  $data['akadprodi_date_updated'] ; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--PageComponentEnd-->
+                        <div class="d-flex align-items-center gap-2">
+                            <a class="btn btn-sm btn-success has-tooltip "   title="{{ __('edit') }}" href="<?php print_link("akadkurikulum/edit/$rec_id"); ?>" >
+                            <i class="fa fa-edit"></i> {{ __('edit') }}
                         </a>
-                    </div>
+                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" title="{{ __('delete') }}" href="<?php print_link("akadkurikulum/delete/$rec_id?redirect=akadkurikulum"); ?>" >
+                        <i class="fa fa-times"></i> {{ __('delete') }}
+                    </a>
                 </div>
             </div>
-            <?php
-                }
-                else{
-            ?>
-            <!-- Empty Record Message -->
-            <div class="text-muted p-3">
-                <i class="fa fa-ban"></i> {{ __('noRecordFound') }}
-            </div>
-            <?php
-                }
-            ?>
         </div>
+        <?php
+            }
+            else{
+        ?>
+        <!-- Empty Record Message -->
+        <div class="text-muted p-3">
+            <i class="fa fa-ban"></i> {{ __('noRecordFound') }}
+        </div>
+        <?php
+            }
+        ?>
     </div>
+</div>
 </div>
 </div>
 </div>

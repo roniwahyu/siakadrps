@@ -25,6 +25,7 @@ class AkadKurikulumController extends Controller
 			$search = trim($request->search);
 			AkadKurikulum::search($query, $search); // search table records
 		}
+		$query->leftJoin("akad_prodi", "akad_kurikulum.id_prodi", "=", "akad_prodi.id_prodi");
 		$orderby = $request->orderby ?? "akad_kurikulum.id_siakad_kurikulum";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);
@@ -43,6 +44,7 @@ class AkadKurikulumController extends Controller
      */
 	function view($rec_id = null){
 		$query = AkadKurikulum::query();
+		$query->leftJoin("akad_prodi", "akad_kurikulum.id_prodi", "=", "akad_prodi.id_prodi");
 		$record = $query->findOrFail($rec_id, AkadKurikulum::viewFields());
 		return $this->renderView("pages.akadkurikulum.view", ["data" => $record]);
 	}

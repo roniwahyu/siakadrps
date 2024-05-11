@@ -338,7 +338,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <select  id="ctrl-id_prodi" data-field="id_prodi" name="id_prodi"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                             <option value="">{{ __('selectAValue') }}</option>
                                             <?php
-                                                $options = $comp_model->id_prodi_option_list() ?? [];
+                                                $options = $comp_model->akadmk_id_prodi_option_list() ?? [];
                                                 foreach($options as $option){
                                                 $value = $option->value;
                                                 $label = $option->label ?? $value;
@@ -365,7 +365,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <select  id="ctrl-isactive" data-field="isactive" name="isactive"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                             <option value="">{{ __('selectAValue') }}</option>
                                             <?php
-                                                $options = Menu::isactive();
+                                                $options = Menu::isactive2();
                                                 $field_value = $data['isactive'];
                                                 if(!empty($options)){
                                                 foreach($options as $option){

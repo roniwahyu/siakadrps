@@ -29,7 +29,16 @@ class ComponentsData{
      * @return array
      */
 	function id_prodi_option_list(){
-		$sqltext = "SELECT id_prodi as value, id_prodi as label FROM akad_prodi";
+		$sqltext = "SELECT
+    a.id_prodi as value , concat('(',a.kode_prodi,') ', a.nama_prodi) as label, 
+    b.kode_fakultas, 
+    b.nama_fakultas
+FROM
+    akad_prodi AS a
+    left JOIN
+    akad_fakultas AS b
+    ON 
+        a.fakultas_id = b.id_fakultas";
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;
@@ -42,6 +51,18 @@ class ComponentsData{
      */
 	function id_siakad_kurikulum_option_list(){
 		$sqltext = "SELECT id_siakad_kurikulum as value, id_siakad_kurikulum as label FROM akad_kurikulum";
+		$query_params = [];
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+	
+
+	/**
+     * akadmk_id_prodi_option_list Model Action
+     * @return array
+     */
+	function akadmk_id_prodi_option_list(){
+		$sqltext = "SELECT id_prodi as value, id_prodi as label FROM akad_prodi";
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;

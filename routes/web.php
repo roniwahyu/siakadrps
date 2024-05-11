@@ -382,6 +382,12 @@ Route::get('componentsdata/id_siakad_kurikulum_option_list',  function(Request $
 	}
 )->middleware(['auth']);
 	
+Route::get('componentsdata/akadmk_id_prodi_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->akadmk_id_prodi_option_list($request);
+	}
+)->middleware(['auth']);
+	
 Route::get('componentsdata/akadmksyarat_id_prodi_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->akadmksyarat_id_prodi_option_list($request);
