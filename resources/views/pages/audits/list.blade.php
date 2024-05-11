@@ -4,6 +4,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
+    //check if current user role is allowed access to the pages
+    $can_add = $user->canAccess("audits/add");
+    $can_edit = $user->canAccess("audits/edit");
+    $can_view = $user->canAccess("audits/view");
+    $can_delete = $user->canAccess("audits/delete");
     $field_name = request()->segment(3);
     $field_value = request()->segment(4);
     $total_records = $records->total();
@@ -156,9 +161,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <i class="fa fa-bars"></i> 
                                                 </button>
                                                 <ul class="dropdown-menu">
+                                                    <?php if($can_view){ ?>
                                                     <a class="dropdown-item "   href="<?php print_link("audits/view/$rec_id"); ?>" >
                                                     <i class="fa fa-eye"></i> {{ __('view') }}
                                                 </a>
+                                                <?php } ?>
                                                 <a class="dropdown-item "   href="<?php print_link("audits/edit/$rec_id"); ?>" >
                                                 <i class="fa fa-edit"></i> {{ __('edit') }}
                                             </a>
@@ -197,9 +204,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
             <div class=" mt-3">
                 <div class="row align-items-center justify-content-between">    
                     <div class="col-md-auto d-flex">    
+                        <?php if($can_delete){ ?>
                         <button data-prompt-msg="{{ __('promptDeleteRecords') }}" data-display-style="modal" data-url="<?php print_link("audits/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
                         <i class="fa fa-times"></i> {{ __('deleteSelected') }}
                         </button>
+                        <?php } ?>
                     </div>
                     <div class="col">   
                         <?php

@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Mail;
 /**
  * All routes which requires auth
  */
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'rbac'])->group(function () {
 		
 	Route::get('home', 'HomeController@index')->name('home');
 
@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('akadfakultas', 'AkadFakultasController@index')->name('akadfakultas.index');
 	Route::get('akadfakultas/index/{filter?}/{filtervalue?}', 'AkadFakultasController@index')->name('akadfakultas.index');	
 	Route::get('akadfakultas/view/{rec_id}', 'AkadFakultasController@view')->name('akadfakultas.view');
-	Route::get('akadfakultas/masterdetail/{rec_id}', 'AkadFakultasController@masterDetail')->name('akadfakultas.masterdetail');	
+	Route::get('akadfakultas/masterdetail/{rec_id}', 'AkadFakultasController@masterDetail')->name('akadfakultas.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('akadfakultas/add', 'AkadFakultasController@add')->name('akadfakultas.add');
 	Route::post('akadfakultas/add', 'AkadFakultasController@store')->name('akadfakultas.store');
 		
@@ -75,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('akadkurikulum', 'AkadKurikulumController@index')->name('akadkurikulum.index');
 	Route::get('akadkurikulum/index/{filter?}/{filtervalue?}', 'AkadKurikulumController@index')->name('akadkurikulum.index');	
 	Route::get('akadkurikulum/view/{rec_id}', 'AkadKurikulumController@view')->name('akadkurikulum.view');
-	Route::get('akadkurikulum/masterdetail/{rec_id}', 'AkadKurikulumController@masterDetail')->name('akadkurikulum.masterdetail');	
+	Route::get('akadkurikulum/masterdetail/{rec_id}', 'AkadKurikulumController@masterDetail')->name('akadkurikulum.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('akadkurikulum/add', 'AkadKurikulumController@add')->name('akadkurikulum.add');
 	Route::post('akadkurikulum/add', 'AkadKurikulumController@store')->name('akadkurikulum.store');
 		
@@ -86,7 +86,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('akadmk', 'AkadMkController@index')->name('akadmk.index');
 	Route::get('akadmk/index/{filter?}/{filtervalue?}', 'AkadMkController@index')->name('akadmk.index');	
 	Route::get('akadmk/view/{rec_id}', 'AkadMkController@view')->name('akadmk.view');
-	Route::get('akadmk/masterdetail/{rec_id}', 'AkadMkController@masterDetail')->name('akadmk.masterdetail');	
+	Route::get('akadmk/masterdetail/{rec_id}', 'AkadMkController@masterDetail')->name('akadmk.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('akadmk/add', 'AkadMkController@add')->name('akadmk.add');
 	Route::post('akadmk/add', 'AkadMkController@store')->name('akadmk.store');
 		
@@ -107,7 +107,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('akadprodi', 'AkadProdiController@index')->name('akadprodi.index');
 	Route::get('akadprodi/index/{filter?}/{filtervalue?}', 'AkadProdiController@index')->name('akadprodi.index');	
 	Route::get('akadprodi/view/{rec_id}', 'AkadProdiController@view')->name('akadprodi.view');
-	Route::get('akadprodi/masterdetail/{rec_id}', 'AkadProdiController@masterDetail')->name('akadprodi.masterdetail');	
+	Route::get('akadprodi/masterdetail/{rec_id}', 'AkadProdiController@masterDetail')->name('akadprodi.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('akadprodi/add', 'AkadProdiController@add')->name('akadprodi.add');
 	Route::post('akadprodi/add', 'AkadProdiController@store')->name('akadprodi.store');
 		
@@ -138,7 +138,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('akaduniversitas', 'AkadUniversitasController@index')->name('akaduniversitas.index');
 	Route::get('akaduniversitas/index/{filter?}/{filtervalue?}', 'AkadUniversitasController@index')->name('akaduniversitas.index');	
 	Route::get('akaduniversitas/view/{rec_id}', 'AkadUniversitasController@view')->name('akaduniversitas.view');
-	Route::get('akaduniversitas/masterdetail/{rec_id}', 'AkadUniversitasController@masterDetail')->name('akaduniversitas.masterdetail');	
+	Route::get('akaduniversitas/masterdetail/{rec_id}', 'AkadUniversitasController@masterDetail')->name('akaduniversitas.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('akaduniversitas/add', 'AkadUniversitasController@add')->name('akaduniversitas.add');
 	Route::post('akaduniversitas/add', 'AkadUniversitasController@store')->name('akaduniversitas.store');
 		
@@ -191,7 +191,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('roles', 'RolesController@index')->name('roles.index');
 	Route::get('roles/index/{filter?}/{filtervalue?}', 'RolesController@index')->name('roles.index');	
 	Route::get('roles/view/{rec_id}', 'RolesController@view')->name('roles.view');
-	Route::get('roles/masterdetail/{rec_id}', 'RolesController@masterDetail')->name('roles.masterdetail');	
+	Route::get('roles/masterdetail/{rec_id}', 'RolesController@masterDetail')->name('roles.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('roles/add', 'RolesController@add')->name('roles.add');
 	Route::post('roles/add', 'RolesController@store')->name('roles.store');
 		
@@ -242,7 +242,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('rpscpjenis', 'RpsCpJenisController@index')->name('rpscpjenis.index');
 	Route::get('rpscpjenis/index/{filter?}/{filtervalue?}', 'RpsCpJenisController@index')->name('rpscpjenis.index');	
 	Route::get('rpscpjenis/view/{rec_id}', 'RpsCpJenisController@view')->name('rpscpjenis.view');
-	Route::get('rpscpjenis/masterdetail/{rec_id}', 'RpsCpJenisController@masterDetail')->name('rpscpjenis.masterdetail');	
+	Route::get('rpscpjenis/masterdetail/{rec_id}', 'RpsCpJenisController@masterDetail')->name('rpscpjenis.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('rpscpjenis/add', 'RpsCpJenisController@add')->name('rpscpjenis.add');
 	Route::post('rpscpjenis/add', 'RpsCpJenisController@store')->name('rpscpjenis.store');
 		
@@ -253,7 +253,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('rpscpmk', 'RpsCpMkController@index')->name('rpscpmk.index');
 	Route::get('rpscpmk/index/{filter?}/{filtervalue?}', 'RpsCpMkController@index')->name('rpscpmk.index');	
 	Route::get('rpscpmk/view/{rec_id}', 'RpsCpMkController@view')->name('rpscpmk.view');
-	Route::get('rpscpmk/masterdetail/{rec_id}', 'RpsCpMkController@masterDetail')->name('rpscpmk.masterdetail');	
+	Route::get('rpscpmk/masterdetail/{rec_id}', 'RpsCpMkController@masterDetail')->name('rpscpmk.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('rpscpmk/add', 'RpsCpMkController@add')->name('rpscpmk.add');
 	Route::post('rpscpmk/add', 'RpsCpMkController@store')->name('rpscpmk.store');
 		
@@ -344,7 +344,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('rpsrps', 'RpsRpsController@index')->name('rpsrps.index');
 	Route::get('rpsrps/index/{filter?}/{filtervalue?}', 'RpsRpsController@index')->name('rpsrps.index');	
 	Route::get('rpsrps/view/{rec_id}', 'RpsRpsController@view')->name('rpsrps.view');
-	Route::get('rpsrps/masterdetail/{rec_id}', 'RpsRpsController@masterDetail')->name('rpsrps.masterdetail');	
+	Route::get('rpsrps/masterdetail/{rec_id}', 'RpsRpsController@masterDetail')->name('rpsrps.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::get('rpsrps/add', 'RpsRpsController@add')->name('rpsrps.add');
 	Route::post('rpsrps/add', 'RpsRpsController@store')->name('rpsrps.store');
 		
@@ -418,9 +418,9 @@ Route::get('componentsdata/coreusers_email_value_exist',  function(Request $requ
 	}
 );
 	
-Route::get('componentsdata/role_id_option_list',  function(Request $request){
+Route::get('componentsdata/user_role_id_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
-		return $compModel->role_id_option_list($request);
+		return $compModel->user_role_id_option_list($request);
 	}
 )->middleware(['auth']);
 	

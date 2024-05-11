@@ -4,6 +4,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
+    //check if current user role is allowed access to the pages
+    $can_add = $user->canAccess("corepermissions/add");
+    $can_edit = $user->canAccess("corepermissions/edit");
+    $can_view = $user->canAccess("corepermissions/view");
+    $can_delete = $user->canAccess("corepermissions/delete");
     $field_name = request()->segment(3);
     $field_value = request()->segment(4);
     $total_records = $records->total();

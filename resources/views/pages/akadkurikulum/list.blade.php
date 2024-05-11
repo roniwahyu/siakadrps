@@ -4,6 +4,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
+    //check if current user role is allowed access to the pages
+    $can_add = $user->canAccess("akadkurikulum/add");
+    $can_edit = $user->canAccess("akadkurikulum/edit");
+    $can_view = $user->canAccess("akadkurikulum/view");
+    $can_delete = $user->canAccess("akadkurikulum/delete");
     $field_name = request()->segment(3);
     $field_value = request()->segment(4);
     $total_records = $records->total();
@@ -27,10 +32,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     </div>
                 </div>
                 <div class="col-auto  " >
+                    <?php if($can_add){ ?>
                     <a  class="btn btn-primary btn-block" href="<?php print_link("akadkurikulum/add", true) ?>" >
                     <i class="fa fa-plus"></i>                              
                     {{ __('addNewAkadKurikulum') }} 
                 </a>
+                <?php } ?>
             </div>
             <div class="col-md-3  " >
                 <!-- Page drop down search component -->
@@ -69,15 +76,18 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <table class="table table-hover table-striped table-sm text-left">
                                 <thead class="table-header ">
                                     <tr>
+                                        <?php if($can_delete){ ?>
                                         <th class="td-checkbox">
                                         <label class="form-check-label">
                                         <input class="toggle-check-all form-check-input" type="checkbox" />
                                         </label>
                                         </th>
+                                        <?php } ?>
                                         <th class="td-id_siakad_kurikulum" > #</th>
                                         <th class="td-kode_kurikulum" > {{ __('kode') }}</th>
                                         <th class="td-nm_kurikulum" > {{ __('nama') }}</th>
                                         <th class="td-id_prodi" > {{ __('prodi') }}</th>
+                                        <th class="td-kode_prodi" > {{ __('kodeProdi') }}</th>
                                         <th class="td-nama_prodi" > {{ __('namaProdi') }}</th>
                                         <th class="td-isactive" > {{ __('aktif') }}</th>
                                         <th class="td-btn"></th>
@@ -95,11 +105,13 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         $counter++;
                                     ?>
                                     <tr>
+                                        <?php if($can_delete){ ?>
                                         <td class=" td-checkbox">
                                             <label class="form-check-label">
                                             <input class="optioncheck form-check-input" name="optioncheck[]" value="<?php echo $data['id_siakad_kurikulum'] ?>" type="checkbox" />
                                             </label>
                                         </td>
+                                        <?php } ?>
                                         <!--PageComponentStart-->
                                         <td class="td-id_siakad_kurikulum">
                                             <a href="<?php print_link("/akadkurikulum/view/$data[id_siakad_kurikulum]") ?>"><?php echo $data['id_siakad_kurikulum']; ?></a>
@@ -115,13 +127,14 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <i class="fa fa-eye"></i> <?php echo "Akad Prodi" ?>
                                         </a>
                                     </td>
-                                 
+                                    <td class="td-akadprodi_kode_prodi">
+                                        <?php echo  $data['akadprodi_kode_prodi'] ; ?>
+                                    </td>
                                     <td class="td-akadprodi_nama_prodi">
                                         <?php echo  $data['akadprodi_nama_prodi'] ; ?>
                                     </td>
                                     <td class="td-isactive">
-                                        <?php //echo  $data['isactive'] ; ?>
-                                        <?= ($data['isactive']=='Aktif')?'<span class="badge bg-danger">'.$data['isactive'].'</span>':'<span class="badge bg-secondary">'.$data['isactive'].'</span>'; ?>
+                                        <?php echo  $data['isactive'] ; ?>
                                     </td>
                                     <!--PageComponentEnd-->
                                     <td class="td-btn">
@@ -130,15 +143,21 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <i class="fa fa-bars"></i> 
                                             </button>
                                             <ul class="dropdown-menu">
+                                                <?php if($can_view){ ?>
                                                 <a class="dropdown-item "   href="<?php print_link("akadkurikulum/view/$rec_id"); ?>" >
                                                 <i class="fa fa-eye"></i> {{ __('view') }}
                                             </a>
+                                            <?php } ?>
+                                            <?php if($can_edit){ ?>
                                             <a class="dropdown-item "   href="<?php print_link("akadkurikulum/edit/$rec_id"); ?>" >
                                             <i class="fa fa-edit"></i> {{ __('edit') }}
                                         </a>
+                                        <?php } ?>
+                                        <?php if($can_delete){ ?>
                                         <a class="dropdown-item record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" href="<?php print_link("akadkurikulum/delete/$rec_id"); ?>" >
                                         <i class="fa fa-times"></i> {{ __('delete') }}
                                     </a>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </td>
@@ -171,9 +190,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
         <div class=" mt-3">
             <div class="row align-items-center justify-content-between">    
                 <div class="col-md-auto d-flex">    
+                    <?php if($can_delete){ ?>
                     <button data-prompt-msg="{{ __('promptDeleteRecords') }}" data-display-style="modal" data-url="<?php print_link("akadkurikulum/delete/{sel_ids}"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
                     <i class="fa fa-times"></i> {{ __('deleteSelected') }}
                     </button>
+                    <?php } ?>
                 </div>
                 <div class="col">   
                     <?php

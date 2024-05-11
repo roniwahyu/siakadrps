@@ -371,7 +371,22 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-user_role_id-holder" class=" ">
-                                            <input id="ctrl-user_role_id" data-field="user_role_id"  value="<?php  echo $data['user_role_id']; ?>" type="number" placeholder="{{ __('enterUserRoleId') }}" step="any"  name="user_role_id"  class="form-control " />
+                                            <select  id="ctrl-user_role_id" data-field="user_role_id" name="user_role_id"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
+                                            <option value="">{{ __('selectAValue') }}</option>
+                                            <?php
+                                                $options = $comp_model->user_role_id_option_list() ?? [];
+                                                foreach($options as $option){
+                                                $value = $option->value;
+                                                $label = $option->label ?? $value;
+                                                $selected = ( $value == $data['user_role_id'] ? 'selected' : null );
+                                            ?>
+                                            <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                            <?php echo $label; ?>
+                                            </option>
+                                            <?php
+                                                }
+                                            ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\CoreUsers;
 use App\Http\Requests\CoreUsersRegisterRequest;
+use App\Models\permissions;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -69,6 +70,7 @@ class AuthController extends Controller{
 		
 		//save Coreusers record
 		$user = $record = Coreusers::create($modeldata);
+		$user->assignRole("Dosen"); //set default role for user
 		$rec_id = $record->id;
 		Auth::login($user);
 		return $this->redirectIntended("/home", __('loginCompleted'));

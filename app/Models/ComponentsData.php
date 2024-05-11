@@ -136,11 +136,11 @@ FROM
 	
 
 	/**
-     * role_id_option_list Model Action
+     * user_role_id_option_list Model Action
      * @return array
      */
-	function role_id_option_list(){
-		$sqltext = "SELECT role_id as value, role_name as label FROM roles";
+	function user_role_id_option_list(){
+		$sqltext = "SELECT role_id AS value, role_name AS label FROM roles";
 		$query_params = [];
 		$arr = DB::select($sqltext, $query_params);
 		return $arr;

@@ -51,7 +51,7 @@ class CoreUsersAccountEditRequest extends FormRequest
 				"otp" => "nullable|string",
 				"otp_login_code" => "nullable|string",
 				"otp_backup_code" => "nullable|string",
-				"user_role_id" => "nullable|numeric",
+				"user_role_id" => "nullable",
             
         ];
     }

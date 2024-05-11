@@ -75,6 +75,7 @@ class CoreUsersController extends Controller
 		
 		//save CoreUsers record
 		$record = CoreUsers::create($modeldata);
+		$record->assignRole("Dosen"); //set default role for user
 		$rec_id = $record->id;
 		return $this->redirect("coreusers", __('recordAddedSuccessfully'));
 	}
