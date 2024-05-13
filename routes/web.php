@@ -50,6 +50,16 @@ Route::middleware(['auth', 'rbac'])->group(function () {
 
 	
 
+/* routes for AkadDosen Controller */
+	Route::get('akaddosen', 'AkadDosenController@index')->name('akaddosen.index');
+	Route::get('akaddosen/index/{filter?}/{filtervalue?}', 'AkadDosenController@index')->name('akaddosen.index');	
+	Route::get('akaddosen/view/{rec_id}', 'AkadDosenController@view')->name('akaddosen.view');	
+	Route::get('akaddosen/add', 'AkadDosenController@add')->name('akaddosen.add');
+	Route::post('akaddosen/add', 'AkadDosenController@store')->name('akaddosen.store');
+		
+	Route::any('akaddosen/edit/{rec_id}', 'AkadDosenController@edit')->name('akaddosen.edit');	
+	Route::get('akaddosen/delete/{rec_id}', 'AkadDosenController@delete');
+
 /* routes for AkadFakultas Controller */
 	Route::get('akadfakultas', 'AkadFakultasController@index')->name('akadfakultas.index');
 	Route::get('akadfakultas/index/{filter?}/{filtervalue?}', 'AkadFakultasController@index')->name('akadfakultas.index');	
@@ -60,6 +70,16 @@ Route::middleware(['auth', 'rbac'])->group(function () {
 		
 	Route::any('akadfakultas/edit/{rec_id}', 'AkadFakultasController@edit')->name('akadfakultas.edit');	
 	Route::get('akadfakultas/delete/{rec_id}', 'AkadFakultasController@delete');
+
+/* routes for AkadJabfung Controller */
+	Route::get('akadjabfung', 'AkadJabfungController@index')->name('akadjabfung.index');
+	Route::get('akadjabfung/index/{filter?}/{filtervalue?}', 'AkadJabfungController@index')->name('akadjabfung.index');	
+	Route::get('akadjabfung/view/{rec_id}', 'AkadJabfungController@view')->name('akadjabfung.view');	
+	Route::get('akadjabfung/add', 'AkadJabfungController@add')->name('akadjabfung.add');
+	Route::post('akadjabfung/add', 'AkadJabfungController@store')->name('akadjabfung.store');
+		
+	Route::any('akadjabfung/edit/{rec_id}', 'AkadJabfungController@edit')->name('akadjabfung.edit');	
+	Route::get('akadjabfung/delete/{rec_id}', 'AkadJabfungController@delete');
 
 /* routes for AkadJenjang Controller */
 	Route::get('akadjenjang', 'AkadJenjangController@index')->name('akadjenjang.index');

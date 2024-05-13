@@ -30,7 +30,9 @@ class RpsPenilaianCpmk extends Model
 	protected $fillable = [
 		'id_subcpmk','id_asesmen','id_kriteria','bobot_prosen','date_update','isactive'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

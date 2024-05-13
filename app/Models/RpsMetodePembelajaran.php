@@ -30,7 +30,9 @@ class RpsMetodePembelajaran extends Model
 	protected $fillable = [
 		'metode','deskripsi','date_update','isactive'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

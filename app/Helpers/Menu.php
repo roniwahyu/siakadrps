@@ -102,19 +102,19 @@
 		
 		[
 			'path' => 'rpsbahanajar',
-			'label' => __('rpsBahanAjar'), 
+			'label' => __('bahanAjarRps'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
 		[
 			'path' => 'rpsbentukpembelajaran',
-			'label' => __('rpsBentukPembelajaran'), 
+			'label' => __('bentukPembelajaranRps'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
 		[
 			'path' => 'rpscp',
-			'label' => __('rpsCp'), 
+			'label' => __('cpRps'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
@@ -194,20 +194,76 @@
 			'path' => 'akadprodi',
 			'label' => __('akadProdi'), 
 			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akadjabfung',
+			'label' => __('akadJabfung'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akaddosen',
+			'label' => __('akadDosen'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		]
+	] ;
+	}
+	
+	public static function navbartopleft(){
+		return [
+		[
+			'path' => 'akadjabfung',
+			'label' => __('akadJabfung'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akaddosen',
+			'label' => __('akadDosen'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		]
+	] ;
+	}
+	
+	public static function navbartopright(){
+		return [
+		[
+			'path' => 'akadjabfung',
+			'label' => __('akadJabfung'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'akaddosen',
+			'label' => __('akadDosen'), 
+			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;
 	}
 	
 		
+	public static function jkel(){
+		return [
+		[
+			'value' => 'L', 
+			'label' => __('l'), 
+		],
+		[
+			'value' => 'P', 
+			'label' => __('p'), 
+		],] ;
+	}
+	
 	public static function isactive(){
 		return [
 		[
 			'value' => '1', 
-			'label' => __('aktif'), 
+			'label' => __('1'), 
 		],
 		[
 			'value' => '0', 
-			'label' => __('nonAktif'), 
+			'label' => __('0'), 
 		],] ;
 	}
 	
@@ -308,18 +364,6 @@
 		[
 			'value' => 'Hapus', 
 			'label' => __('hapus'), 
-		],] ;
-	}
-	
-	public static function isactive2(){
-		return [
-		[
-			'value' => '1', 
-			'label' => __('1'), 
-		],
-		[
-			'value' => '0', 
-			'label' => __('0'), 
 		],] ;
 	}
 	

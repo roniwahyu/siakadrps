@@ -30,7 +30,9 @@ class RpsRps extends Model
 	protected $fillable = [
 		'id_fakultas','id_prodi','id_mk','id_otoritas1','id_otoritas2','deskripsi_rps'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

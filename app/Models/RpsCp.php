@@ -30,7 +30,9 @@ class RpsCp extends Model
 	protected $fillable = [
 		'id_prodi','kode_cp','nama_cp','deskripsi','id_jenis_cp'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

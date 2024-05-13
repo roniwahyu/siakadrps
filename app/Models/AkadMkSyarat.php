@@ -30,7 +30,9 @@ class AkadMkSyarat extends Model
 	protected $fillable = [
 		'id_prodi','kode_mk_main','kode_mk_syarat','nil_mk_syarat','nil_angka_mk_syarat','urut_syarat'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

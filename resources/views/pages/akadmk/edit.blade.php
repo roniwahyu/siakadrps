@@ -283,11 +283,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="upload_silabus_mk">{{ __('uploadSilabusMk') }} <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="upload_silabus_mk">{{ __('uploadSilabusMk') }} </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-upload_silabus_mk-holder" class=" ">
-                                            <input id="ctrl-upload_silabus_mk" data-field="upload_silabus_mk"  value="<?php  echo $data['upload_silabus_mk']; ?>" type="text" placeholder="{{ __('enterUploadSilabusMk') }}"  required="" name="upload_silabus_mk"  class="form-control " />
+                                            <input id="ctrl-upload_silabus_mk" data-field="upload_silabus_mk"  value="<?php  echo $data['upload_silabus_mk']; ?>" type="text" placeholder="{{ __('enterUploadSilabusMk') }}"  name="upload_silabus_mk"  class="form-control " />
                                         </div>
                                     </div>
                                 </div>
@@ -295,11 +295,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="upload_sap_mk">{{ __('uploadSapMk') }} <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="upload_sap_mk">{{ __('uploadSapMk') }} </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-upload_sap_mk-holder" class=" ">
-                                            <input id="ctrl-upload_sap_mk" data-field="upload_sap_mk"  value="<?php  echo $data['upload_sap_mk']; ?>" type="text" placeholder="{{ __('enterUploadSapMk') }}"  required="" name="upload_sap_mk"  class="form-control " />
+                                            <input id="ctrl-upload_sap_mk" data-field="upload_sap_mk"  value="<?php  echo $data['upload_sap_mk']; ?>" type="text" placeholder="{{ __('enterUploadSapMk') }}"  name="upload_sap_mk"  class="form-control " />
                                         </div>
                                     </div>
                                 </div>
@@ -307,11 +307,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="upload_bahan_mk">{{ __('uploadBahanMk') }} <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="upload_bahan_mk">{{ __('uploadBahanMk') }} </label>
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-upload_bahan_mk-holder" class=" ">
-                                            <input id="ctrl-upload_bahan_mk" data-field="upload_bahan_mk"  value="<?php  echo $data['upload_bahan_mk']; ?>" type="text" placeholder="{{ __('enterUploadBahanMk') }}"  required="" name="upload_bahan_mk"  class="form-control " />
+                                            <input id="ctrl-upload_bahan_mk" data-field="upload_bahan_mk"  value="<?php  echo $data['upload_bahan_mk']; ?>" type="text" placeholder="{{ __('enterUploadBahanMk') }}"  name="upload_bahan_mk"  class="form-control " />
                                         </div>
                                     </div>
                                 </div>
@@ -365,7 +365,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <select  id="ctrl-isactive" data-field="isactive" name="isactive"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                             <option value="">{{ __('selectAValue') }}</option>
                                             <?php
-                                                $options = Menu::isactive2();
+                                                $options = Menu::isactive();
                                                 $field_value = $data['isactive'];
                                                 if(!empty($options)){
                                                 foreach($options as $option){

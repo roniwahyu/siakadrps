@@ -30,7 +30,9 @@ class AkadThnAkademik extends Model
 	protected $fillable = [
 		'id_universitas','semester_periode','isactive'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**
@@ -64,9 +66,11 @@ class AkadThnAkademik extends Model
 		return [ 
 			"akad_thn_akademik.id_thn_akademik AS id_thn_akademik",
 			"akad_thn_akademik.id_universitas AS id_universitas",
-			DB::raw("concat('(',akad_universitas.kode_universitas,') ',akad_universitas.nama_universitas) AS akaduniversitas_nama_universitas"),
+			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
 			"akad_thn_akademik.semester_periode AS semester_periode",
-			DB::raw("if(akad_thn_akademik.isactive=1,'Aktif','Non Aktif') AS isactive")		];
+			"akad_thn_akademik.isactive AS isactive",
+			"akad_universitas.id_universitas AS akaduniversitas_id_universitas" 
+		];
 	}
 	
 
@@ -79,7 +83,6 @@ class AkadThnAkademik extends Model
 		return [ 
 			"akad_thn_akademik.id_thn_akademik AS id_thn_akademik",
 			"akad_thn_akademik.id_universitas AS id_universitas",
-			"akad_universitas.kode_universitas AS akaduniversitas_kode_universitas",
 			"akad_universitas.nama_universitas AS akaduniversitas_nama_universitas",
 			"akad_thn_akademik.semester_periode AS semester_periode",
 			"akad_thn_akademik.isactive AS isactive",

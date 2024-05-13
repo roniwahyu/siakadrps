@@ -30,7 +30,9 @@ class RpsPustakaRps extends Model
 	protected $fillable = [
 		'id_mk','id_rps','no_urut','pustaka','deskripsi','jenis_pustaka','url'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

@@ -30,7 +30,9 @@ class Permissions extends Model
 	protected $fillable = [
 		'permission','role_id'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

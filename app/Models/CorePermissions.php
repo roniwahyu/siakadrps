@@ -31,7 +31,9 @@ class CorePermissions extends Model
 	protected $fillable = [
 		'id','id_role','name','permission','action','isactive','create','read','update','delete','setup','report','print','export','import','upload','download','backup','restore','user_dashboard','admin_dashboard','validation','userid','created','modified'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

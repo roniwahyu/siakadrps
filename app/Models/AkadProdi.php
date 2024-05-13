@@ -30,7 +30,9 @@ class AkadProdi extends Model
 	protected $fillable = [
 		'fakultas_id','kode_prodi','nama_prodi'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**
@@ -65,9 +67,10 @@ class AkadProdi extends Model
 	public static function listFields(){
 		return [ 
 			"akad_prodi.fakultas_id AS fakultas_id",
-			DB::raw("concat('(',akad_fakultas.kode_fakultas,') ',akad_fakultas.nama_fakultas) AS akadfakultas_kode_fakultas"),
+			"akad_fakultas.kode_fakultas AS akadfakultas_kode_fakultas",
 			"akad_fakultas.nama_fakultas AS akadfakultas_nama_fakultas",
-			DB::raw("concat('(',akad_prodi.kode_prodi,') ',akad_prodi.nama_prodi) AS nama_prodi"),
+			"akad_prodi.kode_prodi AS kode_prodi",
+			"akad_prodi.nama_prodi AS nama_prodi",
 			"akad_fakultas.id_fakultas AS akadfakultas_id_fakultas",
 			"akad_prodi.id_prodi AS id_prodi" 
 		];

@@ -95,13 +95,8 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <th class="td-sks_praktikum" > {{ __('sksPraktikum') }}</th>
                                         <th class="td-min_mk_lulus" > {{ __('minMkLulus') }}</th>
                                         <th class="td-status_mk" > {{ __('statusMk') }}</th>
-                                        <th class="td-upload_silabus_mk" > {{ __('uploadSilabusMk') }}</th>
-                                        <th class="td-upload_sap_mk" > {{ __('uploadSapMk') }}</th>
-                                        <th class="td-upload_bahan_mk" > {{ __('uploadBahanMk') }}</th>
                                         <th class="td-upload_diktat_mk" > {{ __('uploadDiktatMk') }}</th>
                                         <th class="td-id_prodi" > {{ __('idProdi') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-isactive" > {{ __('isactive') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
@@ -164,15 +159,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <td class="td-status_mk">
                                         <?php echo  $data['status_mk'] ; ?>
                                     </td>
-                                    <td class="td-upload_silabus_mk">
-                                        <?php echo  $data['upload_silabus_mk'] ; ?>
-                                    </td>
-                                    <td class="td-upload_sap_mk">
-                                        <?php echo  $data['upload_sap_mk'] ; ?>
-                                    </td>
-                                    <td class="td-upload_bahan_mk">
-                                        <?php echo  $data['upload_bahan_mk'] ; ?>
-                                    </td>
                                     <td class="td-upload_diktat_mk">
                                         <?php echo  $data['upload_diktat_mk'] ; ?>
                                     </td>
@@ -180,12 +166,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <a size="sm" class="btn btn-sm btn btn-secondary page-modal" href="<?php print_link("akadprodi/view/$data[id_prodi]?subpage=1") ?>">
                                         <i class="fa fa-eye"></i> <?php echo "Akad Prodi" ?>
                                     </a>
-                                </td>
-                                <td class="td-date_created">
-                                    <?php echo  $data['date_created'] ; ?>
-                                </td>
-                                <td class="td-date_updated">
-                                    <?php echo  $data['date_updated'] ; ?>
                                 </td>
                                 <td class="td-isactive">
                                     <?php echo  $data['isactive'] ; ?>

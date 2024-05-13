@@ -30,7 +30,9 @@ class AkadUniversitas extends Model
 	protected $fillable = [
 		'kode_universitas','nama_universitas'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

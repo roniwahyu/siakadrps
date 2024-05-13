@@ -90,7 +90,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <select  id="ctrl-isactive" data-field="isactive" name="isactive"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                             <option value="">{{ __('selectAValue') }}</option>
                                             <?php
-                                                $options = Menu::isactive2();
+                                                $options = Menu::isactive();
                                                 $field_value = $data['isactive'];
                                                 if(!empty($options)){
                                                 foreach($options as $option){

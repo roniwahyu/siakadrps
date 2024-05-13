@@ -31,7 +31,9 @@ class AkadPt extends Model
 	protected $fillable = [
 		'kode_pt','nm_pt','tgl_pt','sk_pt','tgl_sk_pt','almt_pt','kota_pt','kodepos_pt','telp_pt','fax_pt','email_pt','web_pt','logo_pt'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

@@ -30,7 +30,9 @@ class RpsCpRps extends Model
 	protected $fillable = [
 		'id_rps','nama_cp','id_cp'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

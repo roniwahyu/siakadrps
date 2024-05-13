@@ -2,8 +2,10 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class AkadFakultas extends Model 
 {
+	use SoftDeletes;
 	
 
 	/**
@@ -30,7 +32,10 @@ class AkadFakultas extends Model
 	protected $fillable = [
 		'universitas_id','kode_fakultas','nama_fakultas','keterangan'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
+	const DELETED_AT = 'date_deleted'; 
 	
 
 	/**

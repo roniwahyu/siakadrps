@@ -23,7 +23,9 @@ class CoreUsers extends Authenticatable
      */
 	protected $primaryKey = 'id';
 	protected $fillable = ['ip_address','username','password','email','email_login_hash','activation_selector','activation_code','remember_selector','remember_code','created_on','last_login','active','first_name','last_name','company','phone','picture','oauth_provider','oauth_uid','created','nim','claimed','wa_activated','email_activated','activated','otp','otp_login_code','otp_backup_code','forgotten_password_selector','forgotten_password_code','forgotten_password_time','user_role_id'];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**

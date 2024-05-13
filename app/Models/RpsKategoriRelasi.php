@@ -30,7 +30,9 @@ class RpsKategoriRelasi extends Model
 	protected $fillable = [
 		'kode_kategori','nama_kategori','keterangan','sinonim'
 	];
-	public $timestamps = false;
+	public $timestamps = true;
+	const CREATED_AT = 'date_created'; 
+	const UPDATED_AT = 'date_updated'; 
 	
 
 	/**
