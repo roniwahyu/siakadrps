@@ -206,6 +206,12 @@
 			'path' => 'akaddosen',
 			'label' => __('akadDosen'), 
 			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => '',
+			'label' => __('rps'), 
+			'icon' => '<i class="fa fa-align-justify "></i>'
 		]
 	] ;
 	}
@@ -222,6 +228,12 @@
 			'path' => 'akaddosen',
 			'label' => __('akadDosen'), 
 			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => '#',
+			'label' => __('rps'), 
+			'icon' => '<i class="fa fa-align-justify "></i>'
 		]
 	] ;
 	}
