@@ -89,25 +89,24 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="ctrl-isactive-holder" class=" ">
-                                            <select  id="ctrl-isactive" data-field="isactive" name="isactive"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
-                                            <option value="">{{ __('selectAValue') }}</option>
                                             <?php
-                                                $options = Menu::isactive();
+                                                $options = Menu::isactive2();
                                                 $field_value = $data['isactive'];
                                                 if(!empty($options)){
                                                 foreach($options as $option){
                                                 $value = $option['value'];
                                                 $label = $option['label'];
-                                                $selected = Html::get_record_selected($field_value, $value);
+                                                //check if value is among checked options
+                                                $checked = Html::get_record_checked($field_value, $value);
                                             ?>
-                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
-                                            <?php echo $label ?>
-                                            </option>                                   
+                                            <label class="form-check">
+                                            <input class="form-check-input" <?php echo $checked ?>  value="<?php echo $value ?>" type="radio"   name="isactive" />
+                                            <span class="form-check-label"><?php echo $label ?></span>
+                                            </label>
                                             <?php
                                                 }
                                                 }
                                             ?>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>

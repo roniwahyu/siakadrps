@@ -41,11 +41,10 @@ class AkadJabfung extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				id LIKE ?  OR 
 				jabatan LIKE ? 
 		)';
 		$search_params = [
-			"%$text%","%$text%"
+			"%$text%"
 		];
 		//setting search conditions
 		$query->whereRaw($search_condition, $search_params);
@@ -60,9 +59,7 @@ class AkadJabfung extends Model
 	public static function listFields(){
 		return [ 
 			"id",
-			"jabatan",
-			"date_created",
-			"date_updated" 
+			"jabatan" 
 		];
 	}
 	
@@ -75,9 +72,7 @@ class AkadJabfung extends Model
 	public static function exportListFields(){
 		return [ 
 			"id",
-			"jabatan",
-			"date_created",
-			"date_updated" 
+			"jabatan" 
 		];
 	}
 	
@@ -119,8 +114,8 @@ class AkadJabfung extends Model
      */
 	public static function editFields(){
 		return [ 
-			"id",
-			"jabatan" 
+			"jabatan",
+			"id" 
 		];
 	}
 }

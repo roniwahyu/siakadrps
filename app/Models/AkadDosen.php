@@ -68,8 +68,6 @@ class AkadDosen extends Model
 			"jkel",
 			"id_jabfung",
 			"isactive",
-			"date_created",
-			"date_updated",
 			"id_user" 
 		];
 	}
@@ -89,8 +87,6 @@ class AkadDosen extends Model
 			"jkel",
 			"id_jabfung",
 			"isactive",
-			"date_created",
-			"date_updated",
 			"id_user" 
 		];
 	}

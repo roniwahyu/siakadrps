@@ -44,9 +44,9 @@ class AkadThnAkademik extends Model
 		//search table record 
 		$search_condition = '(
 				akad_thn_akademik.id_thn_akademik LIKE ?  OR 
-				akad_universitas.kode_universitas LIKE ?  OR 
 				akad_universitas.nama_universitas LIKE ?  OR 
 				akad_thn_akademik.semester_periode LIKE ?  OR 
+				akad_universitas.kode_universitas LIKE ?  OR 
 				akad_universitas.id_universitas LIKE ? 
 		)';
 		$search_params = [

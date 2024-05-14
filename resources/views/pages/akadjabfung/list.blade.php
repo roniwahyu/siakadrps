@@ -83,10 +83,8 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </label>
                                         </th>
                                         <?php } ?>
-                                        <th class="td-id" > {{ __('id') }}</th>
+                                        <th class="td-id" > #</th>
                                         <th class="td-jabatan" > {{ __('jabatan') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -116,36 +114,23 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <td class="td-jabatan">
                                             <?php echo  $data['jabatan'] ; ?>
                                         </td>
-                                        <td class="td-date_created">
-                                            <?php echo  $data['date_created'] ; ?>
-                                        </td>
-                                        <td class="td-date_updated">
-                                            <?php echo  $data['date_updated'] ; ?>
-                                        </td>
                                         <!--PageComponentEnd-->
                                         <td class="td-btn">
-                                            <div class="dropdown" >
-                                                <button data-bs-toggle="dropdown" class="dropdown-toggle btn text-primary btn-flat btn-sm">
-                                                <i class="fa fa-bars"></i> 
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <?php if($can_view){ ?>
-                                                    <a class="dropdown-item "   href="<?php print_link("akadjabfung/view/$rec_id"); ?>" >
-                                                    <i class="fa fa-eye"></i> {{ __('view') }}
-                                                </a>
-                                                <?php } ?>
-                                                <?php if($can_edit){ ?>
-                                                <a class="dropdown-item "   href="<?php print_link("akadjabfung/edit/$rec_id"); ?>" >
-                                                <i class="fa fa-edit"></i> {{ __('edit') }}
-                                            </a>
-                                            <?php } ?>
-                                            <?php if($can_delete){ ?>
-                                            <a class="dropdown-item record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" href="<?php print_link("akadjabfung/delete/$rec_id"); ?>" >
-                                            <i class="fa fa-times"></i> {{ __('delete') }}
+                                            <?php if($can_view){ ?>
+                                            <a class="btn btn-sm btn-primary has-tooltip "    href="<?php print_link("akadjabfung/view/$rec_id"); ?>" >
+                                            <i class="fa fa-eye"></i> {{ __('view') }}
                                         </a>
                                         <?php } ?>
-                                    </ul>
-                                </div>
+                                        <?php if($can_edit){ ?>
+                                        <a class="btn btn-sm btn-success has-tooltip "    href="<?php print_link("akadjabfung/edit/$rec_id"); ?>" >
+                                        <i class="fa fa-edit"></i> {{ __('edit') }}
+                                    </a>
+                                    <?php } ?>
+                                    <?php if($can_delete){ ?>
+                                    <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal"  href="<?php print_link("akadjabfung/delete/$rec_id"); ?>" >
+                                    <i class="fa fa-times"></i> {{ __('delete') }}
+                                </a>
+                                <?php } ?>
                             </td>
                         </tr>
                         <?php 

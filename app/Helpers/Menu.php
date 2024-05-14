@@ -379,6 +379,18 @@
 		],] ;
 	}
 	
+	public static function isactive2(){
+		return [
+		[
+			'value' => '1', 
+			'label' => __('aktif'), 
+		],
+		[
+			'value' => '0', 
+			'label' => __('nonAktif'), 
+		],] ;
+	}
+	
 	public static function jenisPustaka(){
 		return [
 		[

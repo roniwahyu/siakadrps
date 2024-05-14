@@ -90,8 +90,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <th class="td-jkel" > {{ __('jkel') }}</th>
                                         <th class="td-id_jabfung" > {{ __('idJabfung') }}</th>
                                         <th class="td-isactive" > {{ __('isactive') }}</th>
-                                        <th class="td-date_created" > {{ __('dateCreated') }}</th>
-                                        <th class="td-date_updated" > {{ __('dateUpdated') }}</th>
                                         <th class="td-id_user" > {{ __('idUser') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
@@ -136,12 +134,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         </td>
                                         <td class="td-isactive">
                                             <?php echo  $data['isactive'] ; ?>
-                                        </td>
-                                        <td class="td-date_created">
-                                            <?php echo  $data['date_created'] ; ?>
-                                        </td>
-                                        <td class="td-date_updated">
-                                            <?php echo  $data['date_updated'] ; ?>
                                         </td>
                                         <td class="td-id_user">
                                             <?php echo  $data['id_user'] ; ?>
