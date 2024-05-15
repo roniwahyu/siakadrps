@@ -66,7 +66,7 @@ class AuthController extends Controller{
 			$fileInfo = $this->moveUploadedFiles($modeldata['picture'], "picture");
 			$modeldata['picture'] = $fileInfo['filepath'];
 		}
-		$modeldata['user_group_id'] = auth()->user()->id;
+		// $modeldata['user_group_id'] = auth()->user()->id;
 		$modeldata['password'] = bcrypt($modeldata['password']);
 		
 		//save Coreusers record
