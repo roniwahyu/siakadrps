@@ -46,6 +46,11 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                         <?php
                             if($data){
                             $rec_id = ($data['id'] ? urlencode($data['id']) : null);
+                            //check if user is the owner of the record.
+                            $is_record_owner = ($data['user_group_id'] == $user->id);
+                            //allow user with certain roles to manage record
+                            $can_edit_record = $is_record_owner || $user->hasRole(['dosen']);
+                            $can_delete_record = $is_record_owner || $user->hasRole(['dosen']);
                         ?>
                         <div id="page-main-content" class=" px-3 mb-3">
                             <div class="page-data">
@@ -411,15 +416,27 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <small class="text-muted">{{ __('userGroupId') }}</small>
+                                                    <div class="fw-bold">
+                                                        <?php echo  $data['user_group_id'] ; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!--PageComponentEnd-->
                                 <div class="d-flex align-items-center gap-2">
-                                    <?php if($can_edit){ ?>
+                                    <?php if($can_edit_record){ ?>
                                     <a class="btn btn-sm btn-success has-tooltip "   title="{{ __('edit') }}" href="<?php print_link("coreusers/edit/$rec_id"); ?>" >
                                     <i class="fa fa-edit"></i> {{ __('edit') }}
                                 </a>
                                 <?php } ?>
-                                <?php if($can_delete){ ?>
+                                <?php if($can_delete_record){ ?>
                                 <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" title="{{ __('delete') }}" href="<?php print_link("coreusers/delete/$rec_id?redirect=coreusers"); ?>" >
                                 <i class="fa fa-times"></i> {{ __('delete') }}
                             </a>

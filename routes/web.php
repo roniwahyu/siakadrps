@@ -170,24 +170,66 @@ Route::middleware(['auth', 'rbac'])->group(function () {
 	Route::get('audits/index/{filter?}/{filtervalue?}', 'AuditsController@index')->name('audits.index');	
 	Route::get('audits/view/{rec_id}', 'AuditsController@view')->name('audits.view');
 
+/* routes for CoreGroupPermission Controller */
+	Route::get('coregrouppermission', 'CoreGroupPermissionController@index')->name('coregrouppermission.index');
+	Route::get('coregrouppermission/index/{filter?}/{filtervalue?}', 'CoreGroupPermissionController@index')->name('coregrouppermission.index');	
+	Route::get('coregrouppermission/view/{rec_id}', 'CoreGroupPermissionController@view')->name('coregrouppermission.view');	
+	Route::get('coregrouppermission/add', 'CoreGroupPermissionController@add')->name('coregrouppermission.add');
+	Route::post('coregrouppermission/add', 'CoreGroupPermissionController@store')->name('coregrouppermission.store');
+		
+	Route::any('coregrouppermission/edit/{rec_id}', 'CoreGroupPermissionController@edit')->name('coregrouppermission.edit');	
+	Route::get('coregrouppermission/delete/{rec_id}', 'CoreGroupPermissionController@delete');
+
+/* routes for CoreGroupRole Controller */
+	Route::get('coregrouprole', 'CoreGroupRoleController@index')->name('coregrouprole.index');
+	Route::get('coregrouprole/index/{filter?}/{filtervalue?}', 'CoreGroupRoleController@index')->name('coregrouprole.index');	
+	Route::get('coregrouprole/view/{rec_id}', 'CoreGroupRoleController@view')->name('coregrouprole.view');	
+	Route::get('coregrouprole/add', 'CoreGroupRoleController@add')->name('coregrouprole.add');
+	Route::post('coregrouprole/add', 'CoreGroupRoleController@store')->name('coregrouprole.store');
+		
+	Route::any('coregrouprole/edit/{rec_id}', 'CoreGroupRoleController@edit')->name('coregrouprole.edit');	
+	Route::get('coregrouprole/delete/{rec_id}', 'CoreGroupRoleController@delete');
+
+/* routes for CoreGroups Controller */
+	Route::get('coregroups', 'CoreGroupsController@index')->name('coregroups.index');
+	Route::get('coregroups/index/{filter?}/{filtervalue?}', 'CoreGroupsController@index')->name('coregroups.index');	
+	Route::get('coregroups/view/{rec_id}', 'CoreGroupsController@view')->name('coregroups.view');
+	Route::get('coregroups/masterdetail/{rec_id}', 'CoreGroupsController@masterDetail')->name('coregroups.masterdetail')->withoutMiddleware(['rbac']);	
+	Route::get('coregroups/add', 'CoreGroupsController@add')->name('coregroups.add');
+	Route::post('coregroups/add', 'CoreGroupsController@store')->name('coregroups.store');
+		
+	Route::any('coregroups/edit/{rec_id}', 'CoreGroupsController@edit')->name('coregroups.edit');	
+	Route::get('coregroups/delete/{rec_id}', 'CoreGroupsController@delete');
+
+/* routes for CoreGroupUser Controller */
+	Route::get('coregroupuser', 'CoreGroupUserController@index')->name('coregroupuser.index');
+	Route::get('coregroupuser/index/{filter?}/{filtervalue?}', 'CoreGroupUserController@index')->name('coregroupuser.index');	
+	Route::get('coregroupuser/view/{rec_id}', 'CoreGroupUserController@view')->name('coregroupuser.view');	
+	Route::get('coregroupuser/add', 'CoreGroupUserController@add')->name('coregroupuser.add');
+	Route::post('coregroupuser/add', 'CoreGroupUserController@store')->name('coregroupuser.store');
+		
+	Route::any('coregroupuser/edit/{rec_id}', 'CoreGroupUserController@edit')->name('coregroupuser.edit');	
+	Route::get('coregroupuser/delete/{rec_id}', 'CoreGroupUserController@delete');
+
 /* routes for CorePermissions Controller */
 	Route::get('corepermissions', 'CorePermissionsController@index')->name('corepermissions.index');
 	Route::get('corepermissions/index/{filter?}/{filtervalue?}', 'CorePermissionsController@index')->name('corepermissions.index');
 
-/* routes for CoreRole Controller */
-	Route::get('corerole', 'CoreRoleController@index')->name('corerole.index');
-	Route::get('corerole/index/{filter?}/{filtervalue?}', 'CoreRoleController@index')->name('corerole.index');	
-	Route::get('corerole/view/{rec_id}', 'CoreRoleController@view')->name('corerole.view');	
-	Route::get('corerole/add', 'CoreRoleController@add')->name('corerole.add');
-	Route::post('corerole/add', 'CoreRoleController@store')->name('corerole.store');
+/* routes for CoreRoles Controller */
+	Route::get('coreroles', 'CoreRolesController@index')->name('coreroles.index');
+	Route::get('coreroles/index/{filter?}/{filtervalue?}', 'CoreRolesController@index')->name('coreroles.index');	
+	Route::get('coreroles/view/{rec_id}', 'CoreRolesController@view')->name('coreroles.view');	
+	Route::get('coreroles/add', 'CoreRolesController@add')->name('coreroles.add');
+	Route::post('coreroles/add', 'CoreRolesController@store')->name('coreroles.store');
 		
-	Route::any('corerole/edit/{rec_id}', 'CoreRoleController@edit')->name('corerole.edit');	
-	Route::get('corerole/delete/{rec_id}', 'CoreRoleController@delete');
+	Route::any('coreroles/edit/{rec_id}', 'CoreRolesController@edit')->name('coreroles.edit');	
+	Route::get('coreroles/delete/{rec_id}', 'CoreRolesController@delete');
 
 /* routes for CoreUsers Controller */
 	Route::get('coreusers', 'CoreUsersController@index')->name('coreusers.index');
 	Route::get('coreusers/index/{filter?}/{filtervalue?}', 'CoreUsersController@index')->name('coreusers.index');	
-	Route::get('coreusers/view/{rec_id}', 'CoreUsersController@view')->name('coreusers.view');	
+	Route::get('coreusers/view/{rec_id}', 'CoreUsersController@view')->name('coreusers.view');
+	Route::get('coreusers/masterdetail/{rec_id}', 'CoreUsersController@masterDetail')->name('coreusers.masterdetail')->withoutMiddleware(['rbac']);	
 	Route::any('account/edit', 'AccountController@edit')->name('account.edit');	
 	Route::get('account', 'AccountController@index');	
 	Route::post('account/changepassword', 'AccountController@changepassword')->name('account.changepassword');	
@@ -423,6 +465,18 @@ Route::get('componentsdata/fakultas_id_option_list',  function(Request $request)
 Route::get('componentsdata/id_universitas_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_universitas_option_list($request);
+	}
+)->middleware(['auth']);
+	
+Route::get('componentsdata/group_id_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->group_id_option_list($request);
+	}
+)->middleware(['auth']);
+	
+Route::get('componentsdata/user_id_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->user_id_option_list($request);
 	}
 )->middleware(['auth']);
 	

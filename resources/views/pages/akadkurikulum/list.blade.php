@@ -90,6 +90,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <th class="td-kode_prodi" > {{ __('kodeProdi') }}</th>
                                         <th class="td-nama_prodi" > {{ __('namaProdi') }}</th>
                                         <th class="td-isactive" > {{ __('aktif') }}</th>
+                                        <th class="td-user_group_id" > {{ __('userGroupId') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -103,13 +104,20 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         foreach($records as $data){
                                         $rec_id = ($data['id_siakad_kurikulum'] ? urlencode($data['id_siakad_kurikulum']) : null);
                                         $counter++;
+                                        //check if user is the owner of the record.
+                                        $is_record_owner = ($data['user_group_id'] == $user->id);
+                                        //allow user with certain roles to manage record
+                                        $can_edit_record = $is_record_owner || $user->hasRole(['admin', 'prodi', 'staf']);
+                                        $can_delete_record = $is_record_owner || $user->hasRole(['admin', 'prodi', 'staf']);
                                     ?>
                                     <tr>
                                         <?php if($can_delete){ ?>
                                         <td class=" td-checkbox">
+                                            <?php if($can_delete_record) { ?>
                                             <label class="form-check-label">
                                             <input class="optioncheck form-check-input" name="optioncheck[]" value="<?php echo $data['id_siakad_kurikulum'] ?>" type="checkbox" />
                                             </label>
+                                            <?php } ?>
                                         </td>
                                         <?php } ?>
                                         <!--PageComponentStart-->
@@ -136,6 +144,9 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <td class="td-isactive">
                                         <?php echo  $data['isactive'] ; ?>
                                     </td>
+                                    <td class="td-user_group_id">
+                                        <?php echo  $data['user_group_id'] ; ?>
+                                    </td>
                                     <!--PageComponentEnd-->
                                     <td class="td-btn">
                                         <div class="dropdown" >
@@ -148,12 +159,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <i class="fa fa-eye"></i> {{ __('view') }}
                                             </a>
                                             <?php } ?>
-                                            <?php if($can_edit){ ?>
+                                            <?php if($can_edit_record){ ?>
                                             <a class="dropdown-item "   href="<?php print_link("akadkurikulum/edit/$rec_id"); ?>" >
                                             <i class="fa fa-edit"></i> {{ __('edit') }}
                                         </a>
                                         <?php } ?>
-                                        <?php if($can_delete){ ?>
+                                        <?php if($can_delete_record){ ?>
                                         <a class="dropdown-item record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" href="<?php print_link("akadkurikulum/delete/$rec_id"); ?>" >
                                         <i class="fa fa-times"></i> {{ __('delete') }}
                                     </a>

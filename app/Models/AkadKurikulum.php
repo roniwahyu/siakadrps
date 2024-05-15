@@ -28,7 +28,7 @@ class AkadKurikulum extends Model
      * @var array
      */
 	protected $fillable = [
-		'kode_kurikulum','nm_kurikulum','id_prodi','isactive'
+		'kode_kurikulum','nm_kurikulum','id_prodi','isactive','user_group_id'
 	];
 	public $timestamps = true;
 	const CREATED_AT = 'date_created'; 
@@ -72,6 +72,7 @@ class AkadKurikulum extends Model
 			"akad_prodi.kode_prodi AS akadprodi_kode_prodi",
 			"akad_prodi.nama_prodi AS akadprodi_nama_prodi",
 			"akad_kurikulum.isactive AS isactive",
+			"akad_kurikulum.user_group_id AS user_group_id",
 			"akad_prodi.id_prodi AS akadprodi_id_prodi" 
 		];
 	}
@@ -91,6 +92,7 @@ class AkadKurikulum extends Model
 			"akad_prodi.kode_prodi AS akadprodi_kode_prodi",
 			"akad_prodi.nama_prodi AS akadprodi_nama_prodi",
 			"akad_kurikulum.isactive AS isactive",
+			"akad_kurikulum.user_group_id AS user_group_id",
 			"akad_prodi.id_prodi AS akadprodi_id_prodi" 
 		];
 	}
@@ -115,7 +117,8 @@ class AkadKurikulum extends Model
 			"akad_prodi.kode_prodi AS akadprodi_kode_prodi",
 			"akad_prodi.nama_prodi AS akadprodi_nama_prodi",
 			"akad_prodi.date_created AS akadprodi_date_created",
-			"akad_prodi.date_updated AS akadprodi_date_updated" 
+			"akad_prodi.date_updated AS akadprodi_date_updated",
+			"akad_kurikulum.user_group_id AS user_group_id" 
 		];
 	}
 	
@@ -139,7 +142,8 @@ class AkadKurikulum extends Model
 			"akad_prodi.kode_prodi AS akadprodi_kode_prodi",
 			"akad_prodi.nama_prodi AS akadprodi_nama_prodi",
 			"akad_prodi.date_created AS akadprodi_date_created",
-			"akad_prodi.date_updated AS akadprodi_date_updated" 
+			"akad_prodi.date_updated AS akadprodi_date_updated",
+			"akad_kurikulum.user_group_id AS user_group_id" 
 		];
 	}
 	

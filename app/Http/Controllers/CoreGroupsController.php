@@ -1,12 +1,12 @@
 <?php 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AkadKurikulumAddRequest;
-use App\Http\Requests\AkadKurikulumEditRequest;
-use App\Models\AkadKurikulum;
+use App\Http\Requests\CoreGroupsAddRequest;
+use App\Http\Requests\CoreGroupsEditRequest;
+use App\Models\CoreGroups;
 use Illuminate\Http\Request;
 use Exception;
-class AkadKurikulumController extends Controller
+class CoreGroupsController extends Controller
 {
 	
 
@@ -18,21 +18,20 @@ class AkadKurikulumController extends Controller
      * @return \Illuminate\View\View
      */
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
-		$view = "pages.akadkurikulum.list";
-		$query = AkadKurikulum::query();
+		$view = "pages.coregroups.list";
+		$query = CoreGroups::query();
 		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
-			AkadKurikulum::search($query, $search); // search table records
+			CoreGroups::search($query, $search); // search table records
 		}
-		$query->leftJoin("akad_prodi", "akad_kurikulum.id_prodi", "=", "akad_prodi.id_prodi");
-		$orderby = $request->orderby ?? "akad_kurikulum.id_siakad_kurikulum";
+		$orderby = $request->orderby ?? "core_groups.id";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);
 		if($fieldname){
 			$query->where($fieldname , $fieldvalue); //filter by a table field
 		}
-		$records = $query->paginate($limit, AkadKurikulum::listFields());
+		$records = $query->paginate($limit, CoreGroups::listFields());
 		return $this->renderView($view, compact("records"));
 	}
 	
@@ -43,10 +42,9 @@ class AkadKurikulumController extends Controller
      * @return \Illuminate\View\View
      */
 	function view($rec_id = null){
-		$query = AkadKurikulum::query();
-		$query->leftJoin("akad_prodi", "akad_kurikulum.id_prodi", "=", "akad_prodi.id_prodi");
-		$record = $query->findOrFail($rec_id, AkadKurikulum::viewFields());
-		return $this->renderView("pages.akadkurikulum.view", ["data" => $record]);
+		$query = CoreGroups::query();
+		$record = $query->findOrFail($rec_id, CoreGroups::viewFields());
+		return $this->renderView("pages.coregroups.view", ["data" => $record]);
 	}
 	
 
@@ -56,7 +54,7 @@ class AkadKurikulumController extends Controller
      * @return \Illuminate\View\View
      */
 	function masterDetail($rec_id = null){
-		return View("pages.akadkurikulum.detail-pages", ["masterRecordId" => $rec_id]);
+		return View("pages.coregroups.detail-pages", ["masterRecordId" => $rec_id]);
 	}
 	
 
@@ -65,7 +63,7 @@ class AkadKurikulumController extends Controller
      * @return \Illuminate\View\View
      */
 	function add(){
-		return $this->renderView("pages.akadkurikulum.add");
+		return $this->renderView("pages.coregroups.add");
 	}
 	
 
@@ -73,14 +71,13 @@ class AkadKurikulumController extends Controller
      * Save form record to the table
      * @return \Illuminate\Http\Response
      */
-	function store(AkadKurikulumAddRequest $request){
+	function store(CoreGroupsAddRequest $request){
 		$modeldata = $this->normalizeFormData($request->validated());
-		$modeldata['user_group_id'] = auth()->user()->id;
 		
-		//save AkadKurikulum record
-		$record = AkadKurikulum::create($modeldata);
-		$rec_id = $record->id_siakad_kurikulum;
-		return $this->redirect("akadkurikulum", __('recordAddedSuccessfully'));
+		//save CoreGroups record
+		$record = CoreGroups::create($modeldata);
+		$rec_id = $record->id;
+		return $this->redirect("coregroups", __('recordAddedSuccessfully'));
 	}
 	
 
@@ -89,20 +86,15 @@ class AkadKurikulumController extends Controller
 	 * @param string $rec_id //select record by table primary key
      * @return \Illuminate\View\View;
      */
-	function edit(AkadKurikulumEditRequest $request, $rec_id = null){
-		$query = AkadKurikulum::query();
-		$allowedRoles = auth()->user()->hasRole(["admin", "prodi", "staf"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("akad_kurikulum.user_group_id", auth()->user()->id);
-		}
-		$record = $query->findOrFail($rec_id, AkadKurikulum::editFields());
+	function edit(CoreGroupsEditRequest $request, $rec_id = null){
+		$query = CoreGroups::query();
+		$record = $query->findOrFail($rec_id, CoreGroups::editFields());
 		if ($request->isMethod('post')) {
 			$modeldata = $this->normalizeFormData($request->validated());
 			$record->update($modeldata);
-			return $this->redirect("akadkurikulum", __('recordUpdatedSuccessfully'));
+			return $this->redirect("coregroups", __('recordUpdatedSuccessfully'));
 		}
-		return $this->renderView("pages.akadkurikulum.edit", ["data" => $record, "rec_id" => $rec_id]);
+		return $this->renderView("pages.coregroups.edit", ["data" => $record, "rec_id" => $rec_id]);
 	}
 	
 
@@ -115,13 +107,8 @@ class AkadKurikulumController extends Controller
      */
 	function delete(Request $request, $rec_id = null){
 		$arr_id = explode(",", $rec_id);
-		$query = AkadKurikulum::query();
-		$allowedRoles = auth()->user()->hasRole(["admin", "prodi", "staf"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("akad_kurikulum.user_group_id", auth()->user()->id);
-		}
-		$query->whereIn("id_siakad_kurikulum", $arr_id);
+		$query = CoreGroups::query();
+		$query->whereIn("id", $arr_id);
 		$query->delete();
 		$redirectUrl = $request->redirect ?? url()->previous();
 		return $this->redirect($redirectUrl, __('recordDeletedSuccessfully'));

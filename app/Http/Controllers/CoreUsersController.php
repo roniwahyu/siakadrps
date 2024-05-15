@@ -51,6 +51,16 @@ class CoreUsersController extends Controller
 	
 
 	/**
+     * Display Master Detail Pages
+	 * @param string $rec_id //master record id
+     * @return \Illuminate\View\View
+     */
+	function masterDetail($rec_id = null){
+		return View("pages.coreusers.detail-pages", ["masterRecordId" => $rec_id]);
+	}
+	
+
+	/**
      * Display form page
      * @return \Illuminate\View\View
      */
@@ -71,6 +81,7 @@ class CoreUsersController extends Controller
 			$fileInfo = $this->moveUploadedFiles($modeldata['picture'], "picture");
 			$modeldata['picture'] = $fileInfo['filepath'];
 		}
+		$modeldata['user_group_id'] = auth()->user()->id;
 		$modeldata['password'] = bcrypt($modeldata['password']);
 		
 		//save CoreUsers record
@@ -88,6 +99,11 @@ class CoreUsersController extends Controller
      */
 	function edit(CoreUsersEditRequest $request, $rec_id = null){
 		$query = CoreUsers::query();
+		$allowedRoles = auth()->user()->hasRole(["dosen"]);
+		if(!$allowedRoles){
+			//check if user is the owner of the record.
+			$query->where("core_users.user_group_id", auth()->user()->id);
+		}
 		$record = $query->findOrFail($rec_id, CoreUsers::editFields());
 		if ($request->isMethod('post')) {
 			$modeldata = $this->normalizeFormData($request->validated());
@@ -114,6 +130,11 @@ class CoreUsersController extends Controller
 	function delete(Request $request, $rec_id = null){
 		$arr_id = explode(",", $rec_id);
 		$query = CoreUsers::query();
+		$allowedRoles = auth()->user()->hasRole(["dosen"]);
+		if(!$allowedRoles){
+			//check if user is the owner of the record.
+			$query->where("core_users.user_group_id", auth()->user()->id);
+		}
 		$query->whereIn("id", $arr_id);
 		$query->delete();
 		$redirectUrl = $request->redirect ?? url()->previous();

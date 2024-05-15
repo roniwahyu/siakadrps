@@ -106,6 +106,30 @@ FROM
 	
 
 	/**
+     * group_id_option_list Model Action
+     * @return array
+     */
+	function group_id_option_list(){
+		$sqltext = "SELECT id as value, name as label FROM core_groups";
+		$query_params = [];
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+	
+
+	/**
+     * user_id_option_list Model Action
+     * @return array
+     */
+	function user_id_option_list(){
+		$sqltext = "SELECT id as value, username as label FROM core_users";
+		$query_params = [];
+		$arr = DB::select($sqltext, $query_params);
+		return $arr;
+	}
+	
+
+	/**
      * Check if value already exist in CoreUsers table
 	 * @param string $value
      * @return bool

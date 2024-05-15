@@ -4,7 +4,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    $pageTitle = __('editAkadThnAkademik'); //set dynamic page title
+    $pageTitle = __('editCoreGroupUser'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
@@ -24,7 +24,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 </div>
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">{{ __('editAkadThnAkademik') }}</div>
+                        <div class="h5 font-weight-bold text-primary">{{ __('editCoreGroupUser') }}</div>
                     </div>
                 </div>
             </div>
@@ -39,25 +39,25 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                 <div class="col-md-9 comp-grid " >
                     <div  class="card card-1 border rounded page-content" >
                         <!--[form-start]-->
-                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("akadthnakademik/edit/$rec_id"); ?>" method="post">
+                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("coregroupuser/edit/$rec_id"); ?>" method="post">
                         <!--[form-content-start]-->
                         @csrf
                         <div>
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="id_universitas">{{ __('idUniversitas') }} </label>
+                                        <label class="control-label" for="group_id">{{ __('groupId') }} <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <div id="ctrl-id_universitas-holder" class=" ">
-                                            <select  id="ctrl-id_universitas" data-field="id_universitas" name="id_universitas"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
+                                        <div id="ctrl-group_id-holder" class=" ">
+                                            <select required=""  id="ctrl-group_id" data-field="group_id" name="group_id"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                             <option value="">{{ __('selectAValue') }}</option>
                                             <?php
-                                                $options = $comp_model->id_universitas_option_list() ?? [];
+                                                $options = $comp_model->group_id_option_list() ?? [];
                                                 foreach($options as $option){
                                                 $value = $option->value;
                                                 $label = $option->label ?? $value;
-                                                $selected = ( $value == $data['id_universitas'] ? 'selected' : null );
+                                                $selected = ( $value == $data['group_id'] ? 'selected' : null );
                                             ?>
                                             <option <?php echo $selected; ?> value="<?php echo $value; ?>">
                                             <?php echo $label; ?>
@@ -73,38 +73,23 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="control-label" for="semester_periode">{{ __('semesterPeriode') }} <span class="text-danger">*</span></label>
+                                        <label class="control-label" for="user_id">{{ __('userId') }} <span class="text-danger">*</span></label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <div id="ctrl-semester_periode-holder" class=" ">
-                                            <input id="ctrl-semester_periode" data-field="semester_periode"  value="<?php  echo $data['semester_periode']; ?>" type="text" placeholder="{{ __('enterSemesterPeriode') }}"  required="" name="semester_periode"  class="form-control " />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="control-label" for="isactive">{{ __('isactive') }} </label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div id="ctrl-isactive-holder" class=" ">
-                                            <select  id="ctrl-isactive" data-field="isactive" name="isactive"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
+                                        <div id="ctrl-user_id-holder" class=" ">
+                                            <select required=""  id="ctrl-user_id" data-field="user_id" name="user_id"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                             <option value="">{{ __('selectAValue') }}</option>
                                             <?php
-                                                $options = Menu::isactive();
-                                                $field_value = $data['isactive'];
-                                                if(!empty($options)){
+                                                $options = $comp_model->user_id_option_list() ?? [];
                                                 foreach($options as $option){
-                                                $value = $option['value'];
-                                                $label = $option['label'];
-                                                $selected = Html::get_record_selected($field_value, $value);
+                                                $value = $option->value;
+                                                $label = $option->label ?? $value;
+                                                $selected = ( $value == $data['user_id'] ? 'selected' : null );
                                             ?>
-                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
-                                            <?php echo $label ?>
-                                            </option>                                   
+                                            <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                            <?php echo $label; ?>
+                                            </option>
                                             <?php
-                                                }
                                                 }
                                             ?>
                                             </select>

@@ -71,12 +71,6 @@
 		],
 		
 		[
-			'path' => 'corerole',
-			'label' => __('coreRole'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
 			'path' => 'coreusers',
 			'label' => __('coreUsers'), 
 			'icon' => '<i class="fa fa-globe"></i>'
@@ -212,6 +206,36 @@
 			'path' => '',
 			'label' => __('rps'), 
 			'icon' => '<i class="fa fa-align-justify "></i>'
+		],
+		
+		[
+			'path' => 'coregroupuser',
+			'label' => __('coreGroupUser'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregroups',
+			'label' => __('coreGroups'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coreroles',
+			'label' => __('coreRoles'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregrouprole',
+			'label' => __('coreGroupRole'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregrouppermission',
+			'label' => __('coreGroupPermission'), 
+			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;
 	}
@@ -234,6 +258,36 @@
 			'path' => '#',
 			'label' => __('rps'), 
 			'icon' => '<i class="fa fa-align-justify "></i>'
+		],
+		
+		[
+			'path' => 'coregroupuser',
+			'label' => __('coreGroupUser'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregroups',
+			'label' => __('coreGroups'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coreroles',
+			'label' => __('coreRoles'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregrouprole',
+			'label' => __('coreGroupRole'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregrouppermission',
+			'label' => __('coreGroupPermission'), 
+			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;
 	}
@@ -249,6 +303,36 @@
 		[
 			'path' => 'akaddosen',
 			'label' => __('akadDosen'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregroupuser',
+			'label' => __('coreGroupUser'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregroups',
+			'label' => __('coreGroups'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coreroles',
+			'label' => __('coreRoles'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregrouprole',
+			'label' => __('coreGroupRole'), 
+			'icon' => '<i class="fa fa-globe"></i>'
+		],
+		
+		[
+			'path' => 'coregrouppermission',
+			'label' => __('coreGroupPermission'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;
@@ -376,18 +460,6 @@
 		[
 			'value' => 'Hapus', 
 			'label' => __('hapus'), 
-		],] ;
-	}
-	
-	public static function isactive2(){
-		return [
-		[
-			'value' => '1', 
-			'label' => __('aktif'), 
-		],
-		[
-			'value' => '0', 
-			'label' => __('nonAktif'), 
 		],] ;
 	}
 	
