@@ -38,11 +38,7 @@ class AccountController extends Controller{
 	function edit(CoreUsersAccountEditRequest $request){
 		$rec_id = Auth::id();
 		$query = CoreUsers::query();
-		$allowedRoles = auth()->user()->hasRole(["dosen"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("core_users.user_group_id", auth()->user()->id);
-		}
+		$query->where("core_users.user_group_id", auth()->user()->id);
 		$user = $query->findOrFail($rec_id, CoreUsers::accounteditFields());
 		if ($request->isMethod('post')) {
 			$modeldata = $this->normalizeFormData($request->validated());

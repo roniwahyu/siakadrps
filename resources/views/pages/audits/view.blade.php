@@ -4,11 +4,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    //check if current user role is allowed access to the pages
-    $can_add = $user->canAccess("audits/add");
-    $can_edit = $user->canAccess("audits/edit");
-    $can_view = $user->canAccess("audits/view");
-    $can_delete = $user->canAccess("audits/delete");
     $pageTitle = __('auditDetails'); //set dynamic page title
 ?>
 @extends($layout)

@@ -233,32 +233,8 @@
 		],
 		
 		[
-			'path' => 'personalaccesstokens',
-			'label' => __('personalAccessTokens'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'passwordresettokens',
-			'label' => __('passwordResetTokens'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'migrations',
-			'label' => __('migrations'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'failedjobs',
-			'label' => __('failedJobs'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
 			'path' => 'corepermissions',
-			'label' => __('corePermissions'), 
+			'label' => __('corepermissions'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;
@@ -312,30 +288,6 @@
 			'path' => 'coregrouppermission',
 			'label' => __('coreGroupPermission'), 
 			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'personalaccesstokens',
-			'label' => __('personalAccessTokens'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'passwordresettokens',
-			'label' => __('passwordResetTokens'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'migrations',
-			'label' => __('migrations'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'failedjobs',
-			'label' => __('failedJobs'), 
-			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;
 	}
@@ -381,30 +333,6 @@
 		[
 			'path' => 'coregrouppermission',
 			'label' => __('coreGroupPermission'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'personalaccesstokens',
-			'label' => __('personalAccessTokens'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'passwordresettokens',
-			'label' => __('passwordResetTokens'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'migrations',
-			'label' => __('migrations'), 
-			'icon' => '<i class="fa fa-globe"></i>'
-		],
-		
-		[
-			'path' => 'failedjobs',
-			'label' => __('failedJobs'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		]
 	] ;

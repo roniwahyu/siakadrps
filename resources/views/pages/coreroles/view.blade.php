@@ -4,11 +4,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    //check if current user role is allowed access to the pages
-    $can_add = $user->canAccess("coreroles/add");
-    $can_edit = $user->canAccess("coreroles/edit");
-    $can_view = $user->canAccess("coreroles/view");
-    $can_delete = $user->canAccess("coreroles/delete");
     $pageTitle = __('coreRoleDetails'); //set dynamic page title
 ?>
 @extends($layout)
@@ -192,16 +187,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                 </div>
                                 <!--PageComponentEnd-->
                                 <div class="d-flex align-items-center gap-2">
-                                    <?php if($can_edit){ ?>
                                     <a class="btn btn-sm btn-success has-tooltip "   title="{{ __('edit') }}" href="<?php print_link("coreroles/edit/$rec_id"); ?>" >
                                     <i class="fa fa-edit"></i> {{ __('edit') }}
                                 </a>
-                                <?php } ?>
-                                <?php if($can_delete){ ?>
                                 <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" data-prompt-msg="{{ __('promptDeleteRecord') }}" data-display-style="modal" title="{{ __('delete') }}" href="<?php print_link("coreroles/delete/$rec_id?redirect=coreroles"); ?>" >
                                 <i class="fa fa-times"></i> {{ __('delete') }}
                             </a>
-                            <?php } ?>
                         </div>
                     </div>
                 </div>

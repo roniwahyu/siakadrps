@@ -4,11 +4,6 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    //check if current user role is allowed access to the pages
-    $can_add = $user->canAccess("akadkurikulum/add");
-    $can_edit = $user->canAccess("akadkurikulum/edit");
-    $can_view = $user->canAccess("akadkurikulum/view");
-    $can_delete = $user->canAccess("akadkurikulum/delete");
     $pageTitle = __('akadKurikulumDetails'); //set dynamic page title
 ?>
 @extends($layout)
@@ -48,9 +43,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                             $rec_id = ($data['id_siakad_kurikulum'] ? urlencode($data['id_siakad_kurikulum']) : null);
                             //check if user is the owner of the record.
                             $is_record_owner = ($data['user_group_id'] == $user->id);
-                            //allow user with certain roles to manage record
-                            $can_edit_record = $is_record_owner || $user->hasRole(['admin', 'prodi', 'staf']);
-                            $can_delete_record = $is_record_owner || $user->hasRole(['admin', 'prodi', 'staf']);
+                            $can_edit_record = $can_delete_record = $is_record_owner;
                         ?>
                         <div id="page-main-content" class=" px-3 mb-3">
                             <div class="page-data">

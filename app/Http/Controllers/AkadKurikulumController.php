@@ -91,11 +91,7 @@ class AkadKurikulumController extends Controller
      */
 	function edit(AkadKurikulumEditRequest $request, $rec_id = null){
 		$query = AkadKurikulum::query();
-		$allowedRoles = auth()->user()->hasRole(["admin", "prodi", "staf"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("akad_kurikulum.user_group_id", auth()->user()->id);
-		}
+		$query->where("akad_kurikulum.user_group_id", auth()->user()->id);
 		$record = $query->findOrFail($rec_id, AkadKurikulum::editFields());
 		if ($request->isMethod('post')) {
 			$modeldata = $this->normalizeFormData($request->validated());
@@ -116,11 +112,7 @@ class AkadKurikulumController extends Controller
 	function delete(Request $request, $rec_id = null){
 		$arr_id = explode(",", $rec_id);
 		$query = AkadKurikulum::query();
-		$allowedRoles = auth()->user()->hasRole(["admin", "prodi", "staf"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("akad_kurikulum.user_group_id", auth()->user()->id);
-		}
+		$query->where("akad_kurikulum.user_group_id", auth()->user()->id);
 		$query->whereIn("id_siakad_kurikulum", $arr_id);
 		$query->delete();
 		$redirectUrl = $request->redirect ?? url()->previous();

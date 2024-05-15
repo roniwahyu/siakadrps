@@ -2,7 +2,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-class CorePermissions extends Model 
+class Corepermissions extends Model 
 {
 	
 
@@ -11,7 +11,7 @@ class CorePermissions extends Model
      *
      * @var string
      */
-	protected $table = 'core_permissions';
+	protected $table = 'corepermissions';
 	
 
 	/**
@@ -31,9 +31,7 @@ class CorePermissions extends Model
 	protected $fillable = [
 		'id','id_role','name','permission','action','isactive','create','read','update','delete','setup','report','print','export','import','upload','download','backup','restore','user_dashboard','admin_dashboard','validation','userid','created','modified'
 	];
-	public $timestamps = true;
-	const CREATED_AT = 'date_created'; 
-	const UPDATED_AT = 'date_updated'; 
+	public $timestamps = false;
 	
 
 	/**

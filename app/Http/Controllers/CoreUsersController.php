@@ -86,7 +86,6 @@ class CoreUsersController extends Controller
 		
 		//save CoreUsers record
 		$record = CoreUsers::create($modeldata);
-		$record->assignRole("Dosen"); //set default role for user
 		$rec_id = $record->id;
 		return $this->redirect("coreusers", __('recordAddedSuccessfully'));
 	}
@@ -99,11 +98,7 @@ class CoreUsersController extends Controller
      */
 	function edit(CoreUsersEditRequest $request, $rec_id = null){
 		$query = CoreUsers::query();
-		$allowedRoles = auth()->user()->hasRole(["dosen"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("core_users.user_group_id", auth()->user()->id);
-		}
+		$query->where("core_users.user_group_id", auth()->user()->id);
 		$record = $query->findOrFail($rec_id, CoreUsers::editFields());
 		if ($request->isMethod('post')) {
 			$modeldata = $this->normalizeFormData($request->validated());
@@ -130,11 +125,7 @@ class CoreUsersController extends Controller
 	function delete(Request $request, $rec_id = null){
 		$arr_id = explode(",", $rec_id);
 		$query = CoreUsers::query();
-		$allowedRoles = auth()->user()->hasRole(["dosen"]);
-		if(!$allowedRoles){
-			//check if user is the owner of the record.
-			$query->where("core_users.user_group_id", auth()->user()->id);
-		}
+		$query->where("core_users.user_group_id", auth()->user()->id);
 		$query->whereIn("id", $arr_id);
 		$query->delete();
 		$redirectUrl = $request->redirect ?? url()->previous();

@@ -4,17 +4,12 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
 -->
 @inject('comp_model', 'App\Models\ComponentsData')
 <?php
-    //check if current user role is allowed access to the pages
-    $can_add = $user->canAccess("corepermissions/add");
-    $can_edit = $user->canAccess("corepermissions/edit");
-    $can_view = $user->canAccess("corepermissions/view");
-    $can_delete = $user->canAccess("corepermissions/delete");
     $field_name = request()->segment(3);
     $field_value = request()->segment(4);
     $total_records = $records->total();
     $limit = $records->perPage();
     $record_count = count($records);
-    $pageTitle = __('corePermissions'); //set dynamic page title
+    $pageTitle = __('corepermissions'); //set dynamic page title
 ?>
 @extends($layout)
 @section('title', $pageTitle)
@@ -28,13 +23,13 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
             <div class="row justify-content-between align-items-center gap-3">
                 <div class="col  " >
                     <div class="">
-                        <div class="h5 font-weight-bold text-primary">{{ __('corePermissions') }}</div>
+                        <div class="h5 font-weight-bold text-primary">{{ __('corepermissions') }}</div>
                     </div>
                 </div>
                 <div class="col-auto  " >
                     <a  class="btn " href="<?php print_link("corepermissions/add") ?>" >
                     <i class="fa fa-plus"></i>                              
-                    {{ __('addNewCorePermission') }} 
+                    {{ __('addNewCorepermission') }} 
                 </a>
             </div>
             <div class="col-md-3  " >

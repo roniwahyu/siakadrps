@@ -1,11 +1,11 @@
 <?php 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CorePermissionsAddRequest;
-use App\Models\CorePermissions;
+use App\Http\Requests\CorepermissionsAddRequest;
+use App\Models\Corepermissions;
 use Illuminate\Http\Request;
 use Exception;
-class CorePermissionsController extends Controller
+class CorepermissionsController extends Controller
 {
 	
 
@@ -18,19 +18,19 @@ class CorePermissionsController extends Controller
      */
 	function index(Request $request, $fieldname = null , $fieldvalue = null){
 		$view = "pages.corepermissions.list";
-		$query = CorePermissions::query();
+		$query = Corepermissions::query();
 		$limit = $request->limit ?? 25;
 		if($request->search){
 			$search = trim($request->search);
-			CorePermissions::search($query, $search); // search table records
+			Corepermissions::search($query, $search); // search table records
 		}
-		$orderby = $request->orderby ?? "core_permissions.id";
+		$orderby = $request->orderby ?? "corepermissions.id";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);
 		if($fieldname){
 			$query->where($fieldname , $fieldvalue); //filter by a table field
 		}
-		$records = $query->paginate($limit, CorePermissions::listFields());
+		$records = $query->paginate($limit, Corepermissions::listFields());
 		return $this->renderView($view, compact("records"));
 	}
 }
