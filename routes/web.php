@@ -422,6 +422,22 @@ Route::middleware(['auth', 'rbac'])->group(function () {
 		
 	Route::any('rpssubcpmkasesmen/edit/{rec_id}', 'RpsSubCpmkAsesmenController@edit')->name('rpssubcpmkasesmen.edit');	
 	Route::get('rpssubcpmkasesmen/delete/{rec_id}', 'RpsSubCpmkAsesmenController@delete');
+
+/* routes for PersonalAccessTokens Controller */
+	Route::get('personalaccesstokens', 'PersonalAccessTokensController@index')->name('personalaccesstokens.index');
+	Route::get('personalaccesstokens/index/{filter?}/{filtervalue?}', 'PersonalAccessTokensController@index')->name('personalaccesstokens.index');
+
+/* routes for PasswordResetTokens Controller */
+	Route::get('passwordresettokens', 'PasswordResetTokensController@index')->name('passwordresettokens.index');
+	Route::get('passwordresettokens/index/{filter?}/{filtervalue?}', 'PasswordResetTokensController@index')->name('passwordresettokens.index');
+
+/* routes for Migrations Controller */
+	Route::get('migrations', 'MigrationsController@index')->name('migrations.index');
+	Route::get('migrations/index/{filter?}/{filtervalue?}', 'MigrationsController@index')->name('migrations.index');
+
+/* routes for FailedJobs Controller */
+	Route::get('failedjobs', 'FailedJobsController@index')->name('failedjobs.index');
+	Route::get('failedjobs/index/{filter?}/{filtervalue?}', 'FailedJobsController@index')->name('failedjobs.index');
 });
 
 
@@ -495,6 +511,12 @@ Route::get('componentsdata/coreusers_email_value_exist',  function(Request $requ
 Route::get('componentsdata/user_role_id_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->user_role_id_option_list($request);
+	}
+)->middleware(['auth']);
+	
+Route::get('componentsdata/role_id_option_list',  function(Request $request){
+		$compModel = new App\Models\ComponentsData();
+		return $compModel->role_id_option_list($request);
 	}
 )->middleware(['auth']);
 	

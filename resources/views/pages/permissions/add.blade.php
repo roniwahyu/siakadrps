@@ -64,7 +64,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                 <select  id="ctrl-role_id" data-field="role_id" name="role_id"  placeholder="{{ __('selectAValue') }}"    class="form-select" >
                                                 <option value="">{{ __('selectAValue') }}</option>
                                                 <?php 
-                                                    $options = $comp_model->user_role_id_option_list() ?? [];
+                                                    $options = $comp_model->role_id_option_list() ?? [];
                                                     foreach($options as $option){
                                                     $value = $option->value;
                                                     $label = $option->label ?? $value;

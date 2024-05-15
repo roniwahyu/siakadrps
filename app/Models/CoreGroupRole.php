@@ -19,8 +19,7 @@ class CoreGroupRole extends Model
      *
      * @var string
      */
-	protected $primaryKey = 'role_id';
-	public $incrementing = false;
+	protected $primaryKey = 'id';
 	
 
 	/**
@@ -42,10 +41,11 @@ class CoreGroupRole extends Model
 	public static function search($query, $text){
 		//search table record 
 		$search_condition = '(
-				role_id LIKE ? 
+				role_id LIKE ?  OR 
+				id LIKE ? 
 		)';
 		$search_params = [
-			"%$text%"
+			"%$text%","%$text%"
 		];
 		//setting search conditions
 		$query->whereRaw($search_condition, $search_params);
@@ -60,7 +60,8 @@ class CoreGroupRole extends Model
 	public static function listFields(){
 		return [ 
 			"group_id",
-			"role_id" 
+			"role_id",
+			"id" 
 		];
 	}
 	
@@ -73,7 +74,8 @@ class CoreGroupRole extends Model
 	public static function exportListFields(){
 		return [ 
 			"group_id",
-			"role_id" 
+			"role_id",
+			"id" 
 		];
 	}
 	
@@ -86,7 +88,8 @@ class CoreGroupRole extends Model
 	public static function viewFields(){
 		return [ 
 			"group_id",
-			"role_id" 
+			"role_id",
+			"id" 
 		];
 	}
 	
@@ -99,7 +102,8 @@ class CoreGroupRole extends Model
 	public static function exportViewFields(){
 		return [ 
 			"group_id",
-			"role_id" 
+			"role_id",
+			"id" 
 		];
 	}
 	
@@ -112,7 +116,8 @@ class CoreGroupRole extends Model
 	public static function editFields(){
 		return [ 
 			"group_id",
-			"role_id" 
+			"role_id",
+			"id" 
 		];
 	}
 }

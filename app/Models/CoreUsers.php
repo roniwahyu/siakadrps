@@ -442,21 +442,21 @@ class CoreUsers extends Authenticatable
 	* Get the permissions of the user.
 	*/
 	public function permissions(){
-		return $this->hasMany(Permissions::class, 'role_id', 'user_role_id');
+		return $this->hasMany(CorePermissions::class, 'role_id', 'user_role_id');
 	}
 	
 	/**
 	* Get the roles of the user.
 	*/
 	public function roles(){
-		return $this->hasMany(Roles::class, 'role_id', 'user_role_id');
+		return $this->hasMany(CoreRoles::class, 'role_id', 'user_role_id');
 	}
 	
 	/**
 	* set user role
 	*/
 	public function assignRole($roleName){
-		$roleId = Roles::select('role_id')->where('role_name', $roleName)->value('role_id');
+		$roleId = CoreRoles::select('role_id')->where('role_name', $roleName)->value('role_id');
 		$this->user_role_id = $roleId;
 		$this->save();
 	}

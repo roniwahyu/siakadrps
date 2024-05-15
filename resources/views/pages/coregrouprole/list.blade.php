@@ -85,6 +85,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                         <?php } ?>
                                         <th class="td-group_id" > {{ __('groupId') }}</th>
                                         <th class="td-role_id" > {{ __('roleId') }}</th>
+                                        <th class="td-id" > {{ __('id') }}</th>
                                         <th class="td-btn"></th>
                                     </tr>
                                 </thead>
@@ -96,14 +97,14 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                     <?php
                                         $counter = 0;
                                         foreach($records as $data){
-                                        $rec_id = ($data['group_id'] ? urlencode($data['group_id']) : null);
+                                        $rec_id = ($data['id'] ? urlencode($data['id']) : null);
                                         $counter++;
                                     ?>
                                     <tr>
                                         <?php if($can_delete){ ?>
                                         <td class=" td-checkbox">
                                             <label class="form-check-label">
-                                            <input class="optioncheck form-check-input" name="optioncheck[]" value="<?php echo $data['group_id'] ?>" type="checkbox" />
+                                            <input class="optioncheck form-check-input" name="optioncheck[]" value="<?php echo $data['id'] ?>" type="checkbox" />
                                             </label>
                                         </td>
                                         <?php } ?>
@@ -112,7 +113,10 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                             <?php echo  $data['group_id'] ; ?>
                                         </td>
                                         <td class="td-role_id">
-                                            <a href="<?php print_link("/coregrouprole/view/$data[role_id]") ?>"><?php echo $data['role_id']; ?></a>
+                                            <a href="<?php print_link("/coregrouprole/view/$data[id]") ?>"><?php echo $data['role_id']; ?></a>
+                                        </td>
+                                        <td class="td-id">
+                                            <a href="<?php print_link("/coregrouprole/view/$data[id]") ?>"><?php echo $data['id']; ?></a>
                                         </td>
                                         <!--PageComponentEnd-->
                                         <td class="td-btn">

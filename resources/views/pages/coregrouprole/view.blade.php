@@ -45,7 +45,7 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                     <div  class=" page-content" >
                         <?php
                             if($data){
-                            $rec_id = ($data['group_id'] ? urlencode($data['group_id']) : null);
+                            $rec_id = ($data['id'] ? urlencode($data['id']) : null);
                         ?>
                         <div id="page-main-content" class=" px-3 mb-3">
                             <div class="ajax-page-load-indicator" style="display:none">
@@ -76,6 +76,18 @@ e.g $arrDataFromDb = $comp_model->fetchData(); //function name
                                                     <small class="text-muted">{{ __('roleId') }}</small>
                                                     <div class="fw-bold">
                                                         <?php echo  $data['role_id'] ; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="bg-light mb-1 card-1 p-2 border rounded">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <small class="text-muted">{{ __('id') }}</small>
+                                                    <div class="fw-bold">
+                                                        <?php echo  $data['id'] ; ?>
                                                     </div>
                                                 </div>
                                             </div>

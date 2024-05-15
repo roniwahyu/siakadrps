@@ -25,7 +25,7 @@ class CoreGroupRoleController extends Controller
 			$search = trim($request->search);
 			CoreGroupRole::search($query, $search); // search table records
 		}
-		$orderby = $request->orderby ?? "core_group_role.role_id";
+		$orderby = $request->orderby ?? "core_group_role.id";
 		$ordertype = $request->ordertype ?? "desc";
 		$query->orderBy($orderby, $ordertype);
 		if($fieldname){
@@ -66,7 +66,7 @@ class CoreGroupRoleController extends Controller
 		
 		//save CoreGroupRole record
 		$record = CoreGroupRole::create($modeldata);
-		$rec_id = $record->role_id;
+		$rec_id = $record->id;
 		return $this->redirect("coregrouprole", __('recordAddedSuccessfully'));
 	}
 	
@@ -98,7 +98,7 @@ class CoreGroupRoleController extends Controller
 	function delete(Request $request, $rec_id = null){
 		$arr_id = explode(",", $rec_id);
 		$query = CoreGroupRole::query();
-		$query->whereIn("role_id", $arr_id);
+		$query->whereIn("id", $arr_id);
 		$query->delete();
 		$redirectUrl = $request->redirect ?? url()->previous();
 		return $this->redirect($redirectUrl, __('recordDeletedSuccessfully'));
