@@ -60,7 +60,7 @@
 		
 		[
 			'path' => 'audits',
-			'label' => __('audits'), 
+			'label' => __('coreAudits'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
@@ -108,13 +108,13 @@
 		
 		[
 			'path' => 'rpscpjenis',
-			'label' => __('rpsCpJenis'), 
+			'label' => __('rpsJenisCp'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
 		[
 			'path' => 'rpscpmk',
-			'label' => __('rpsCpMk'), 
+			'label' => __('rpsCpmk'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
@@ -126,7 +126,7 @@
 		
 		[
 			'path' => 'rpscpsubmk',
-			'label' => __('rpsCpSubMk'), 
+			'label' => __('rpsSubCpmk'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
@@ -150,7 +150,7 @@
 		
 		[
 			'path' => 'rpspembahasanrps',
-			'label' => __('rpsPembahasanRps'), 
+			'label' => __('rpsPembahasan'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
@@ -162,7 +162,7 @@
 		
 		[
 			'path' => 'rpspustakarps',
-			'label' => __('rpsPustakaRps'), 
+			'label' => __('rpsPustaka'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
@@ -174,25 +174,25 @@
 		
 		[
 			'path' => 'rpssubcpmkasesmen',
-			'label' => __('rpsSubCpmkAsesmen'), 
+			'label' => __('rpsAsesmenSubCpmk'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
 		[
 			'path' => 'akadprodi',
-			'label' => __('akadProdi'), 
+			'label' => __('prodi'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
 		[
 			'path' => 'akadjabfung',
-			'label' => __('akadJabfung'), 
+			'label' => __('jabatanFungsional'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
 		[
 			'path' => 'akaddosen',
-			'label' => __('akadDosen'), 
+			'label' => __('dosen'), 
 			'icon' => '<i class="fa fa-globe"></i>'
 		],
 		
