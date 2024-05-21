@@ -498,12 +498,6 @@ Route::get('componentsdata/user_role_id_option_list',  function(Request $request
 	}
 )->middleware(['auth']);
 	
-Route::get('componentsdata/role_id_option_list',  function(Request $request){
-		$compModel = new App\Models\ComponentsData();
-		return $compModel->role_id_option_list($request);
-	}
-)->middleware(['auth']);
-	
 Route::get('componentsdata/id_jenis_cp_option_list',  function(Request $request){
 		$compModel = new App\Models\ComponentsData();
 		return $compModel->id_jenis_cp_option_list($request);
